@@ -12,6 +12,7 @@
 		EB14FD0D2A3BDB8900AADD76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB14FD0C2A3BDB8900AADD76 /* Assets.xcassets */; };
 		EB14FD102A3BDB8900AADD76 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB14FD0F2A3BDB8900AADD76 /* Preview Assets.xcassets */; };
 		EB14FD182A3BE1DF00AADD76 /* Task.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EB14FD162A3BE1DF00AADD76 /* Task.xcdatamodeld */; };
+		EB14FD1C2A3BE4AC00AADD76 /* TaskContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB14FD1B2A3BE4AC00AADD76 /* TaskContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		EB14FD0C2A3BDB8900AADD76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB14FD0F2A3BDB8900AADD76 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EB14FD172A3BE1DF00AADD76 /* Task.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Task.xcdatamodel; sourceTree = "<group>"; };
+		EB14FD1B2A3BE4AC00AADD76 /* TaskContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,11 +55,12 @@
 		EB14FD072A3BDB8800AADD76 /* CoreDataList */ = {
 			isa = PBXGroup;
 			children = (
+				EB14FD1A2A3BE47700AADD76 /* CoreDataPContainers */,
+				EB14FD192A3BE45900AADD76 /* CoreDataModels */,
 				EB14FD082A3BDB8800AADD76 /* CoreDataListApp.swift */,
 				EB14FD0A2A3BDB8800AADD76 /* ContentView.swift */,
 				EB14FD0C2A3BDB8900AADD76 /* Assets.xcassets */,
 				EB14FD0E2A3BDB8900AADD76 /* Preview Content */,
-				EB14FD162A3BE1DF00AADD76 /* Task.xcdatamodeld */,
 			);
 			path = CoreDataList;
 			sourceTree = "<group>";
@@ -68,6 +71,22 @@
 				EB14FD0F2A3BDB8900AADD76 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		EB14FD192A3BE45900AADD76 /* CoreDataModels */ = {
+			isa = PBXGroup;
+			children = (
+				EB14FD162A3BE1DF00AADD76 /* Task.xcdatamodeld */,
+			);
+			path = CoreDataModels;
+			sourceTree = "<group>";
+		};
+		EB14FD1A2A3BE47700AADD76 /* CoreDataPContainers */ = {
+			isa = PBXGroup;
+			children = (
+				EB14FD1B2A3BE4AC00AADD76 /* TaskContainer.swift */,
+			);
+			path = CoreDataPContainers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +159,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB14FD1C2A3BE4AC00AADD76 /* TaskContainer.swift in Sources */,
 				EB14FD182A3BE1DF00AADD76 /* Task.xcdatamodeld in Sources */,
 				EB14FD0B2A3BDB8800AADD76 /* ContentView.swift in Sources */,
 				EB14FD092A3BDB8800AADD76 /* CoreDataListApp.swift in Sources */,
