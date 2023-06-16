@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     @FetchRequest(sortDescriptors: []) private var tasks: FetchedResults<TaskEntity>
-    @State private var showTaskCreatView = false
+    @State private var showTaskCreateView = false
     
     var body: some View {
         NavigationStack {
@@ -24,7 +24,7 @@ struct MainView: View {
                 toolbarItems
             }
         }
-        .sheet(isPresented: $showTaskCreatView) {
+        .sheet(isPresented: $showTaskCreateView) {
             TaskCreationView()
         }
     }
@@ -32,7 +32,7 @@ struct MainView: View {
     var toolbarItems: some ToolbarContent {
         ToolbarItem(placement: .navigationBarTrailing) {
             Button {
-                showTaskCreatView = true
+                showTaskCreateView = true
             } label: {
                 Image(systemName: "plus")
                     .font(.title3)
@@ -42,7 +42,7 @@ struct MainView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
     }
