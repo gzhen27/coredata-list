@@ -8,21 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		EB14FD092A3BDB8800AADD76 /* CoreDataListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB14FD082A3BDB8800AADD76 /* CoreDataListApp.swift */; };
-		EB14FD0B2A3BDB8800AADD76 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB14FD0A2A3BDB8800AADD76 /* ContentView.swift */; };
+		EB14FD0B2A3BDB8800AADD76 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB14FD0A2A3BDB8800AADD76 /* MainView.swift */; };
 		EB14FD0D2A3BDB8900AADD76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB14FD0C2A3BDB8900AADD76 /* Assets.xcassets */; };
 		EB14FD102A3BDB8900AADD76 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB14FD0F2A3BDB8900AADD76 /* Preview Assets.xcassets */; };
-		EB14FD182A3BE1DF00AADD76 /* Task.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EB14FD162A3BE1DF00AADD76 /* Task.xcdatamodeld */; };
-		EB14FD1C2A3BE4AC00AADD76 /* TaskContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB14FD1B2A3BE4AC00AADD76 /* TaskContainer.swift */; };
+		EB14FD182A3BE1DF00AADD76 /* Tasks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EB14FD162A3BE1DF00AADD76 /* Tasks.xcdatamodeld */; };
+		EB14FD1C2A3BE4AC00AADD76 /* TasksContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB14FD1B2A3BE4AC00AADD76 /* TasksContainer.swift */; };
+		EBCF84B32A3CFD250028FE0B /* TaskCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCF84B22A3CFD250028FE0B /* TaskCreationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EB14FD052A3BDB8800AADD76 /* CoreDataList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB14FD082A3BDB8800AADD76 /* CoreDataListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataListApp.swift; sourceTree = "<group>"; };
-		EB14FD0A2A3BDB8800AADD76 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EB14FD0A2A3BDB8800AADD76 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		EB14FD0C2A3BDB8900AADD76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB14FD0F2A3BDB8900AADD76 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EB14FD172A3BE1DF00AADD76 /* Task.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Task.xcdatamodel; sourceTree = "<group>"; };
-		EB14FD1B2A3BE4AC00AADD76 /* TaskContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskContainer.swift; sourceTree = "<group>"; };
+		EB14FD1B2A3BE4AC00AADD76 /* TasksContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksContainer.swift; sourceTree = "<group>"; };
+		EBCF84B22A3CFD250028FE0B /* TaskCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,10 +57,9 @@
 		EB14FD072A3BDB8800AADD76 /* CoreDataList */ = {
 			isa = PBXGroup;
 			children = (
-				EB14FD1A2A3BE47700AADD76 /* CoreDataPContainers */,
-				EB14FD192A3BE45900AADD76 /* CoreDataModels */,
+				EBCF84B12A3CFCEE0028FE0B /* View */,
+				EB14FD192A3BE45900AADD76 /* CoreDataHelpers */,
 				EB14FD082A3BDB8800AADD76 /* CoreDataListApp.swift */,
-				EB14FD0A2A3BDB8800AADD76 /* ContentView.swift */,
 				EB14FD0C2A3BDB8900AADD76 /* Assets.xcassets */,
 				EB14FD0E2A3BDB8900AADD76 /* Preview Content */,
 			);
@@ -73,20 +74,22 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		EB14FD192A3BE45900AADD76 /* CoreDataModels */ = {
+		EB14FD192A3BE45900AADD76 /* CoreDataHelpers */ = {
 			isa = PBXGroup;
 			children = (
-				EB14FD162A3BE1DF00AADD76 /* Task.xcdatamodeld */,
+				EB14FD1B2A3BE4AC00AADD76 /* TasksContainer.swift */,
+				EB14FD162A3BE1DF00AADD76 /* Tasks.xcdatamodeld */,
 			);
-			path = CoreDataModels;
+			path = CoreDataHelpers;
 			sourceTree = "<group>";
 		};
-		EB14FD1A2A3BE47700AADD76 /* CoreDataPContainers */ = {
+		EBCF84B12A3CFCEE0028FE0B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				EB14FD1B2A3BE4AC00AADD76 /* TaskContainer.swift */,
+				EB14FD0A2A3BDB8800AADD76 /* MainView.swift */,
+				EBCF84B22A3CFD250028FE0B /* TaskCreationView.swift */,
 			);
-			path = CoreDataPContainers;
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,9 +162,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB14FD1C2A3BE4AC00AADD76 /* TaskContainer.swift in Sources */,
-				EB14FD182A3BE1DF00AADD76 /* Task.xcdatamodeld in Sources */,
-				EB14FD0B2A3BDB8800AADD76 /* ContentView.swift in Sources */,
+				EBCF84B32A3CFD250028FE0B /* TaskCreationView.swift in Sources */,
+				EB14FD1C2A3BE4AC00AADD76 /* TasksContainer.swift in Sources */,
+				EB14FD182A3BE1DF00AADD76 /* Tasks.xcdatamodeld in Sources */,
+				EB14FD0B2A3BDB8800AADD76 /* MainView.swift in Sources */,
 				EB14FD092A3BDB8800AADD76 /* CoreDataListApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -365,13 +369,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		EB14FD162A3BE1DF00AADD76 /* Task.xcdatamodeld */ = {
+		EB14FD162A3BE1DF00AADD76 /* Tasks.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				EB14FD172A3BE1DF00AADD76 /* Task.xcdatamodel */,
 			);
 			currentVersion = EB14FD172A3BE1DF00AADD76 /* Task.xcdatamodel */;
-			path = Task.xcdatamodeld;
+			path = Tasks.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

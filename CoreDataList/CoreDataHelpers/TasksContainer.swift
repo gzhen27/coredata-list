@@ -1,5 +1,5 @@
 //
-//  TaskContainer.swift
+//  TasksContainer.swift
 //  CoreDataList
 //
 //  Created by G Zhen on 6/15/23.
@@ -7,11 +7,11 @@
 
 import CoreData
 
-class TaskContainer {
+class TasksContainer {
     let persistentContainer: NSPersistentContainer
     
     init() {
-        persistentContainer = NSPersistentContainer(name: "Task")
+        persistentContainer = NSPersistentContainer(name: "Tasks")
         persistentContainer.loadPersistentStores { _, _ in
             // handling errors
         }

@@ -11,8 +11,8 @@ import SwiftUI
 struct CoreDataListApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, TaskContainer().persistentContainer.viewContext)
+            MainView()
+                .environment(\.managedObjectContext, TasksContainer().persistentContainer.viewContext)
         }
     }
 }
