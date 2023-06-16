@@ -10,8 +10,9 @@ import SwiftUI
 struct TaskCreationView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.managedObjectContext) var managedObjectContext
-    @State private var name: String = ""
-    @State private var errorMessage = ""
+    
+    @State private var name = ""
+    @FocusState private var isTypingMode: Bool
     
     var nameInputView: some View {
         VStack {
@@ -20,24 +21,24 @@ struct TaskCreationView: View {
                     .foregroundColor(.gray)
                     .font(.headline)
                 TextField("task name", text: $name)
+                    .keyboardType(.asciiCapable)
                     .autocorrectionDisabled(true)
+                    .focused($isTypingMode)
                 saveBtn
                     .foregroundColor(name.isEmpty ? .gray : .accentColor)
+                    .disabled(name.isEmpty)
             }
             .padding()
             .overlay(RoundedRectangle(cornerRadius: 8).stroke(.gray, lineWidth: 1))
-            Text(errorMessage)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .font(.footnote)
-                .foregroundColor(.red)
+        }
+        .onTapGesture {
+            isTypingMode = false
         }
     }
     
     var saveBtn: some View {
         Button {
-            if name.isEmpty {
-                errorMessage = "The task name is missing."
-            } else {
+            if !name.isEmpty {
                 let task = TaskEntity(context: managedObjectContext)
                 task.name = name
                 try? managedObjectContext.save()
@@ -51,12 +52,15 @@ struct TaskCreationView: View {
     var body: some View {
         VStack {
             nameInputView
-                .padding(.top)
+                .padding(.top, 28)
             Spacer()
         }
         .padding(.horizontal)
         .presentationDetents([.fraction(0.10)])
         .presentationCornerRadius(8)
+        .onAppear {
+            isTypingMode = true
+        }
     }
 }
 

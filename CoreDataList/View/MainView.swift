@@ -21,19 +21,23 @@ struct MainView: View {
             .navigationTitle("Tasks")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        showTaskCreatView = true
-                    } label: {
-                        Image(systemName: "plus")
-                            .font(.title3)
-                    }
-
-                }
+                toolbarItems
             }
         }
         .sheet(isPresented: $showTaskCreatView) {
             TaskCreationView()
+        }
+    }
+    
+    var toolbarItems: some ToolbarContent {
+        ToolbarItem(placement: .navigationBarTrailing) {
+            Button {
+                showTaskCreatView = true
+            } label: {
+                Image(systemName: "plus")
+                    .font(.title3)
+            }
+
         }
     }
 }
