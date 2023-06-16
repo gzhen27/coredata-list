@@ -11,6 +11,7 @@
 		EB14FD0B2A3BDB8800AADD76 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB14FD0A2A3BDB8800AADD76 /* ContentView.swift */; };
 		EB14FD0D2A3BDB8900AADD76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB14FD0C2A3BDB8900AADD76 /* Assets.xcassets */; };
 		EB14FD102A3BDB8900AADD76 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB14FD0F2A3BDB8900AADD76 /* Preview Assets.xcassets */; };
+		EB14FD182A3BE1DF00AADD76 /* Task.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EB14FD162A3BE1DF00AADD76 /* Task.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		EB14FD0A2A3BDB8800AADD76 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EB14FD0C2A3BDB8900AADD76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB14FD0F2A3BDB8900AADD76 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EB14FD172A3BE1DF00AADD76 /* Task.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Task.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 				EB14FD0A2A3BDB8800AADD76 /* ContentView.swift */,
 				EB14FD0C2A3BDB8900AADD76 /* Assets.xcassets */,
 				EB14FD0E2A3BDB8900AADD76 /* Preview Content */,
+				EB14FD162A3BE1DF00AADD76 /* Task.xcdatamodeld */,
 			);
 			path = CoreDataList;
 			sourceTree = "<group>";
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB14FD182A3BE1DF00AADD76 /* Task.xcdatamodeld in Sources */,
 				EB14FD0B2A3BDB8800AADD76 /* ContentView.swift in Sources */,
 				EB14FD092A3BDB8800AADD76 /* CoreDataListApp.swift in Sources */,
 			);
@@ -339,6 +343,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EB14FD162A3BE1DF00AADD76 /* Task.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EB14FD172A3BE1DF00AADD76 /* Task.xcdatamodel */,
+			);
+			currentVersion = EB14FD172A3BE1DF00AADD76 /* Task.xcdatamodel */;
+			path = Task.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EB14FCFD2A3BDB8800AADD76 /* Project object */;
 }
