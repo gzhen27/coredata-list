@@ -45,5 +45,6 @@ struct MainView: View {
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
+            .environment(\.managedObjectContext, TasksContainer(devMode: true).persistentContainer.viewContext)
     }
 }

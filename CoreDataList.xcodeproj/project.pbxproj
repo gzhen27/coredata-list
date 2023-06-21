@@ -13,6 +13,7 @@
 		EB14FD102A3BDB8900AADD76 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB14FD0F2A3BDB8900AADD76 /* Preview Assets.xcassets */; };
 		EB14FD182A3BE1DF00AADD76 /* Tasks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EB14FD162A3BE1DF00AADD76 /* Tasks.xcdatamodeld */; };
 		EB14FD1C2A3BE4AC00AADD76 /* TasksContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB14FD1B2A3BE4AC00AADD76 /* TasksContainer.swift */; };
+		EB8A88772A42717E00A26AC4 /* TasksMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8A88762A42717E00A26AC4 /* TasksMockData.swift */; };
 		EBCF84B32A3CFD250028FE0B /* TaskCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCF84B22A3CFD250028FE0B /* TaskCreationView.swift */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +25,7 @@
 		EB14FD0F2A3BDB8900AADD76 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EB14FD172A3BE1DF00AADD76 /* Task.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Task.xcdatamodel; sourceTree = "<group>"; };
 		EB14FD1B2A3BE4AC00AADD76 /* TasksContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksContainer.swift; sourceTree = "<group>"; };
+		EB8A88762A42717E00A26AC4 /* TasksMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksMockData.swift; sourceTree = "<group>"; };
 		EBCF84B22A3CFD250028FE0B /* TaskCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				EB14FD0F2A3BDB8900AADD76 /* Preview Assets.xcassets */,
+				EB8A88762A42717E00A26AC4 /* TasksMockData.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 			files = (
 				EBCF84B32A3CFD250028FE0B /* TaskCreationView.swift in Sources */,
 				EB14FD1C2A3BE4AC00AADD76 /* TasksContainer.swift in Sources */,
+				EB8A88772A42717E00A26AC4 /* TasksMockData.swift in Sources */,
 				EB14FD182A3BE1DF00AADD76 /* Tasks.xcdatamodeld in Sources */,
 				EB14FD0B2A3BDB8800AADD76 /* MainView.swift in Sources */,
 				EB14FD092A3BDB8800AADD76 /* CoreDataListApp.swift in Sources */,
