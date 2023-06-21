@@ -39,7 +39,7 @@ struct TaskCreationView: View {
     var saveBtn: some View {
         Button {
             if !name.isEmpty {
-                let task = TaskEntity(context: managedObjectContext)
+                let task = TaskObject(context: managedObjectContext)
                 task.name = name
                 try? managedObjectContext.save()
                 dismiss()

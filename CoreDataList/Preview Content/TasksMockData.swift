@@ -17,13 +17,13 @@ extension TasksContainer {
     }
     
     static func addMockData(moc: NSManagedObjectContext) {
-        let task1 = TaskEntity(context: moc)
+        let task1 = TaskObject(context: moc)
         task1.name = "First Task"
         
-        let task2 = TaskEntity(context: moc)
+        let task2 = TaskObject(context: moc)
         task2.name = "Second Task"
     
-        let task3 = TaskEntity(context: moc)
+        let task3 = TaskObject(context: moc)
         task3.name = "Third Task"
         
         try? moc.save()

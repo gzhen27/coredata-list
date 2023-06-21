@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct MainView: View {
-    @FetchRequest(sortDescriptors: []) private var tasks: FetchedResults<TaskEntity>
+    @FetchRequest(sortDescriptors: []) private var tasks: FetchedResults<TaskObject>
     @State private var showTaskCreateView = false
     
     var body: some View {
         NavigationStack {
             VStack {
                 List(tasks) { task in
-                    Text(task.name ?? "")
+                    Text(task.getName)
                 }
             }
             .navigationTitle("Tasks")
