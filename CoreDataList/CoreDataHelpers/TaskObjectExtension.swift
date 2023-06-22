@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 extension TaskObject {
     var getName: String {
         name ?? "Unknown"

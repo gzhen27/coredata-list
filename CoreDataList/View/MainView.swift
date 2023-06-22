@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct MainView: View {
-    @Environment(\.managedObjectContext) var managedObjectContext
-    @FetchRequest<TaskObject>(sortDescriptors: [SortDescriptor(\.createdAt)]) private var tasks
-    @State private var showTaskCreateView = false
+    @Environment(\.managedObjectContext)
+    private var managedObjectContext
+    
+    @FetchRequest<TaskObject>(sortDescriptors: [SortDescriptor(\.createdAt)])
+    private var tasks
+    
+    @State
+    private var showTaskCreateView = false
     
     var body: some View {
         NavigationStack {
@@ -20,6 +25,7 @@ struct MainView: View {
                         Image(systemName: task.isLike ? "heart.fill" : "heart")
                             .font(.largeTitle)
                             .foregroundColor(task.isLike ? .accentColor : Color("BlackandWhite"))
+                            .animation(.easeInOut, value: task.isLike)
                             .onTapGesture {
                                 task.isLike.toggle()
                                 try? managedObjectContext.save()

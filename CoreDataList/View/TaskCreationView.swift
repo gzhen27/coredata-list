@@ -8,11 +8,17 @@
 import SwiftUI
 
 struct TaskCreationView: View {
-    @Environment(\.dismiss) var dismiss
-    @Environment(\.managedObjectContext) var managedObjectContext
+    @Environment(\.dismiss)
+    private var dismiss
     
-    @State private var name = ""
-    @FocusState private var isTypingMode: Bool
+    @Environment(\.managedObjectContext)
+    private var managedObjectContext
+    
+    @State
+    private var name = ""
+    
+    @FocusState
+    private var isTypingMode: Bool
     
     var nameInputView: some View {
         VStack {
