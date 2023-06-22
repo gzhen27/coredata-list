@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
+    @Environment(\.managedObjectContext) var managedObjectContext
     @FetchRequest<TaskObject>(sortDescriptors: [SortDescriptor(\.createdAt)]) private var tasks
     @State private var showTaskCreateView = false
     
@@ -15,11 +16,20 @@ struct MainView: View {
         NavigationStack {
             VStack {
                 List(tasks) { task in
-                    VStack(alignment: .leading) {
-                        Text(task.getName)
-                            .font(.title2)
-                        Text("created at \(task.getCreatedAt)")
-                            .font(.footnote)
+                    HStack {
+                        Image(systemName: task.isLike ? "heart.fill" : "heart")
+                            .font(.largeTitle)
+                            .foregroundColor(task.isLike ? .accentColor : Color("BlackandWhite"))
+                            .onTapGesture {
+                                task.isLike.toggle()
+                                try? managedObjectContext.save()
+                            }
+                        VStack(alignment: .leading) {
+                            Text(task.getName)
+                                .font(.title2)
+                            Text("created at \(task.getCreatedAt)")
+                                .font(.footnote)
+                        }
                     }
                 }
             }

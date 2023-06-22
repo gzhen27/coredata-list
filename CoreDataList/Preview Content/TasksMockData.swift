@@ -20,6 +20,7 @@ extension TasksContainer {
         let task1 = TaskObject(context: moc)
         task1.name = "First Task"
         task1.createdAt = Date.now
+        task1.isLike = true
         
         let task2 = TaskObject(context: moc)
         task2.name = "Second Task"
