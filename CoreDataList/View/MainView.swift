@@ -8,14 +8,19 @@
 import SwiftUI
 
 struct MainView: View {
-    @FetchRequest(sortDescriptors: []) private var tasks: FetchedResults<TaskObject>
+    @FetchRequest<TaskObject>(sortDescriptors: [SortDescriptor(\.createdAt)]) private var tasks
     @State private var showTaskCreateView = false
     
     var body: some View {
         NavigationStack {
             VStack {
                 List(tasks) { task in
-                    Text(task.getName)
+                    VStack(alignment: .leading) {
+                        Text(task.getName)
+                            .font(.title2)
+                        Text("created at \(task.getCreatedAt)")
+                            .font(.footnote)
+                    }
                 }
             }
             .navigationTitle("Tasks")
