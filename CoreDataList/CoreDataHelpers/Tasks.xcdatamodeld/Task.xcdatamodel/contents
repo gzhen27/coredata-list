@@ -5,4 +5,5 @@
         <attribute name="isLike" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
+    <fetchRequest name="FetchRequest" entity="TaskObject" predicateString="isLike == 0"/>
 </model>

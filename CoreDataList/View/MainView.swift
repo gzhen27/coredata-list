@@ -11,7 +11,7 @@ struct MainView: View {
     @Environment(\.managedObjectContext)
     private var managedObjectContext
     
-    @FetchRequest<TaskObject>(sortDescriptors: [SortDescriptor(\.createdAt)])
+    @FetchRequest<TaskObject>(sortDescriptors: [SortDescriptor(\.createdAt)], animation: .easeOut(duration: 0.5))
     private var tasks
     
     @State
@@ -20,24 +20,33 @@ struct MainView: View {
     @State
     private var searchText = ""
     
+    @State
+    private var filterdLiked = false
+    
     var body: some View {
         NavigationStack {
-            List(tasks) { task in
-                HStack {
-                    Image(systemName: task.isLike ? "heart.fill" : "heart")
-                        .font(.largeTitle)
-                        .foregroundColor(task.isLike ? .accentColor : Color("BlackandWhite"))
-                        .animation(.easeInOut, value: task.isLike)
-                        .onTapGesture {
-                            task.isLike.toggle()
-                            try? managedObjectContext.save()
+            ScrollView {
+                ForEach(tasks) { task in
+                    HStack {
+                        Image(systemName: task.isLike ? "heart.fill" : "heart")
+                            .font(.largeTitle)
+                            .foregroundColor(task.isLike ? .accentColor : Color("BlackandWhite"))
+                            .animation(.easeInOut, value: task.isLike)
+                            .onTapGesture {
+                                task.isLike.toggle()
+                                try? managedObjectContext.save()
+                            }
+                            .padding(.trailing)
+                        VStack(alignment: .leading) {
+                            Text(task.getName)
+                                .font(.title2)
+                            Text("created at \(task.getCreatedAt)")
+                                .font(.footnote)
                         }
-                    VStack(alignment: .leading) {
-                        Text(task.getName)
-                            .font(.title2)
-                        Text("created at \(task.getCreatedAt)")
-                            .font(.footnote)
+                        Spacer()
                     }
+                    .padding()
+                    Divider()
                 }
             }
             .navigationTitle("Tasks")
@@ -46,7 +55,8 @@ struct MainView: View {
                 tasks.nsPredicate = text.isEmpty ? nil : NSPredicate(format: "name CONTAINS %@", text)
             }
             .toolbar {
-                toolbarItems
+                toolbarFilterItem
+                toolbarPlusItem
             }
         }
         .sheet(isPresented: $showTaskCreateView) {
@@ -54,7 +64,21 @@ struct MainView: View {
         }
     }
     
-    var toolbarItems: some ToolbarContent {
+    var toolbarFilterItem: some ToolbarContent {
+        ToolbarItem(placement: .navigationBarLeading) {
+            Button {
+                withAnimation(.easeOut(duration: 0.5)) {
+                    filterdLiked.toggle()
+                    tasks.nsPredicate = filterdLiked ? NSPredicate(format: "isLike == 1") : nil
+                }
+            } label: {
+                Image(systemName: filterdLiked ? "heart.fill" : "heart")
+                    .font(.title3)
+            }
+        }
+    }
+    
+    var toolbarPlusItem: some ToolbarContent {
         ToolbarItem(placement: .navigationBarTrailing) {
             Button {
                 showTaskCreateView = true
