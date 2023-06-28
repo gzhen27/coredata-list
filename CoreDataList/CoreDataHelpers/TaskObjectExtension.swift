@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 extension TaskObject {
     var getName: String {
@@ -20,5 +21,15 @@ extension TaskObject {
         localDateFormatter.timeStyle = .short
         
         return localDateFormatter.string(from: createdAt)
+    }
+}
+
+extension TaskObject {
+    static var topFiveTasks: NSFetchRequest<TaskObject> {
+        let request = TaskObject.fetchRequest()
+        
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \TaskObject.name, ascending: true)]
+        
+        return request
     }
 }

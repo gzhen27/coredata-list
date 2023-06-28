@@ -11,7 +11,7 @@ struct MainView: View {
     @Environment(\.managedObjectContext)
     private var managedObjectContext
     
-    @FetchRequest<TaskObject>(sortDescriptors: [SortDescriptor(\.createdAt)], animation: .easeOut(duration: 0.5))
+    @FetchRequest(fetchRequest: TaskObject.topFiveTasks)
     private var tasks
     
     @State

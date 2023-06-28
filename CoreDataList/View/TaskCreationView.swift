@@ -47,6 +47,7 @@ struct TaskCreationView: View {
             if !name.isEmpty {
                 let task = TaskObject(context: managedObjectContext)
                 task.name = name
+                task.isLike = false
                 task.createdAt = Date.now
                 try? managedObjectContext.save()
                 dismiss()
