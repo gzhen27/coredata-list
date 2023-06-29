@@ -17,6 +17,9 @@ struct TaskCreationView: View {
     @State
     private var name = ""
     
+    @State
+    private var difficulty = "easy"
+    
     @FocusState
     private var isTypingMode: Bool
     
@@ -30,6 +33,11 @@ struct TaskCreationView: View {
                     .keyboardType(.asciiCapable)
                     .autocorrectionDisabled(true)
                     .focused($isTypingMode)
+                Picker("Difficulty", selection: $difficulty) {
+                    Text("Easy").tag("easy")
+                    Text("Medium").tag("medium")
+                    Text("Hard").tag("hard")
+                }
                 saveBtn
                     .foregroundColor(name.isEmpty ? .gray : .accentColor)
                     .disabled(name.isEmpty)
@@ -49,6 +57,7 @@ struct TaskCreationView: View {
                 task.name = name
                 task.isLike = false
                 task.createdAt = Date.now
+                task.difficulty = difficulty
                 try? managedObjectContext.save()
                 dismiss()
             }

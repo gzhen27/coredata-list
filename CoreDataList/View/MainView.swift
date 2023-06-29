@@ -11,7 +11,7 @@ struct MainView: View {
     @Environment(\.managedObjectContext)
     private var managedObjectContext
     
-    @FetchRequest(fetchRequest: TaskObject.topFiveTasks, animation: .easeInOut(duration: 0.5))
+    @FetchRequest(fetchRequest: TaskObject.tasks, animation: .easeInOut(duration: 0.5))
     private var tasks
     
     @State
@@ -43,6 +43,7 @@ struct MainView: View {
                             .font(.footnote)
                     }
                     Spacer()
+                    Text(task.getDifficulty.capitalized)
                 }
                 .padding(.bottom)
             }

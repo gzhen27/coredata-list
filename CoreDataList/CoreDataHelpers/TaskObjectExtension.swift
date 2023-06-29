@@ -13,6 +13,10 @@ extension TaskObject {
         name ?? "Unknown"
     }
     
+    var getDifficulty: String {
+        difficulty ?? "Unknown"
+    }
+    
     var getCreatedAt: String {
         guard let createdAt = createdAt else { return "N/A"}
         
@@ -25,10 +29,10 @@ extension TaskObject {
 }
 
 extension TaskObject {
-    static var topFiveTasks: NSFetchRequest<TaskObject> {
+    static var tasks: NSFetchRequest<TaskObject> {
         let request = TaskObject.fetchRequest()
         
-        request.sortDescriptors = [NSSortDescriptor(keyPath: \TaskObject.name, ascending: true)]
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \TaskObject.createdAt, ascending: true)]
         
         return request
     }
