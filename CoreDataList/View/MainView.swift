@@ -11,7 +11,7 @@ struct MainView: View {
     @Environment(\.managedObjectContext)
     private var managedObjectContext
     
-    @FetchRequest(fetchRequest: TaskObject.topFiveTasks)
+    @FetchRequest(fetchRequest: TaskObject.topFiveTasks, animation: .easeInOut(duration: 0.5))
     private var tasks
     
     @State
@@ -25,31 +25,29 @@ struct MainView: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView {
-                ForEach(tasks) { task in
-                    HStack {
-                        Image(systemName: task.isLike ? "heart.fill" : "heart")
-                            .font(.largeTitle)
-                            .foregroundColor(task.isLike ? .accentColor : Color("BlackandWhite"))
-                            .animation(.easeInOut, value: task.isLike)
-                            .onTapGesture {
-                                task.isLike.toggle()
-                                try? managedObjectContext.save()
-                            }
-                            .padding(.trailing)
-                        VStack(alignment: .leading) {
-                            Text(task.getName)
-                                .font(.title2)
-                            Text("created at \(task.getCreatedAt)")
-                                .font(.footnote)
+            List(tasks) { task in
+                HStack {
+                    Image(systemName: task.isLike ? "heart.fill" : "heart")
+                        .font(.largeTitle)
+                        .foregroundColor(task.isLike ? .accentColor : Color("BlackandWhite"))
+                        .animation(.easeInOut, value: task.isLike)
+                        .onTapGesture {
+                            task.isLike.toggle()
+                            try? managedObjectContext.save()
                         }
-                        Spacer()
+                        .padding(.trailing)
+                    VStack(alignment: .leading) {
+                        Text(task.getName)
+                            .font(.title2)
+                        Text("created at \(task.getCreatedAt)")
+                            .font(.footnote)
                     }
-                    .padding()
-                    Divider()
+                    Spacer()
                 }
+                .padding(.bottom)
             }
-            .navigationTitle("Tasks")
+            .listStyle(PlainListStyle())
+            .navigationTitle("Tasks (\(tasks.count))")
             .searchable(text: $searchText)
             .onChange(of: searchText) { text in
                 tasks.nsPredicate = text.isEmpty ? nil : NSPredicate(format: "name CONTAINS %@", text)
