@@ -11,7 +11,7 @@ struct MainView: View {
     @Environment(\.managedObjectContext)
     private var managedObjectContext
     
-    @FetchRequest(fetchRequest: TaskObject.tasks, animation: .easeInOut(duration: 0.5))
+    @SectionedFetchRequest(fetchRequest: TaskObject.tasks, sectionIdentifier: \.difficulty)
     private var tasks
     
     @State
@@ -25,30 +25,17 @@ struct MainView: View {
     
     var body: some View {
         NavigationStack {
-            List(tasks) { task in
-                HStack {
-                    Image(systemName: task.isLike ? "heart.fill" : "heart")
-                        .font(.largeTitle)
-                        .foregroundColor(task.isLike ? .accentColor : Color("BlackandWhite"))
-                        .animation(.easeInOut, value: task.isLike)
-                        .onTapGesture {
-                            task.isLike.toggle()
-                            try? managedObjectContext.save()
-                        }
-                        .padding(.trailing)
-                    VStack(alignment: .leading) {
-                        Text(task.getName)
-                            .font(.title2)
-                        Text("created at \(task.getCreatedAt)")
-                            .font(.footnote)
+            List(tasks) { section in
+                Section {
+                    ForEach(section) { task in
+                        taskCell(task: task)
                     }
-                    Spacer()
-                    Text(task.getDifficulty.capitalized)
+                } header: {
+                    Text(section.id!.capitalized)
                 }
-                .padding(.bottom)
+                .headerProminence(.increased)
+                .navigationTitle("Tasks")
             }
-            .listStyle(PlainListStyle())
-            .navigationTitle("Tasks (\(tasks.count))")
             .searchable(text: $searchText)
             .onChange(of: searchText) { text in
                 tasks.nsPredicate = text.isEmpty ? nil : NSPredicate(format: "name CONTAINS[cd] %@", text)
@@ -86,6 +73,28 @@ struct MainView: View {
                     .font(.title3)
             }
         }
+    }
+    
+    private func taskCell(task: TaskObject) -> some View {
+        HStack {
+            Image(systemName: task.isLike ? "heart.fill" : "heart")
+                .font(.largeTitle)
+                .foregroundColor(task.isLike ? .accentColor : Color("BlackandWhite"))
+                .animation(.easeInOut, value: task.isLike)
+                .onTapGesture {
+                    task.isLike.toggle()
+                    try? managedObjectContext.save()
+                }
+            VStack(alignment: .leading) {
+                Text(task.getName)
+                    .font(.title2)
+                Text("created at \(task.getCreatedAt)")
+                    .font(.footnote)
+            }
+            Spacer()
+            Text(task.getDifficulty.capitalized)
+        }
+        .padding(.vertical, 8)
     }
 }
 

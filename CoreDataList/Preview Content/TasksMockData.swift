@@ -26,8 +26,13 @@ extension TasksContainer {
         let task2 = TaskObject(context: moc)
         task2.name = "Second Task"
         task2.createdAt = Date.now.addingTimeInterval(60)
-    
-        _ = TaskObject(context: moc)
+        task2.difficulty = "hard"
+        
+        let task3 = TaskObject(context: moc)
+        task3.name = "First Task"
+        task3.createdAt = Date.now
+        task3.isLike = true
+        task3.difficulty = "easy"
         
         let task4 = TaskObject(context: moc)
         task4.name = "Fourth Task"
