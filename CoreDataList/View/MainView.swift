@@ -11,7 +11,7 @@ struct MainView: View {
     @Environment(\.managedObjectContext)
     private var managedObjectContext
     
-    @SectionedFetchRequest(fetchRequest: TaskObject.tasks, sectionIdentifier: \.difficulty)
+    @FetchRequest(fetchRequest: TaskObject.tasks)
     private var tasks
     
     @State
@@ -25,15 +25,10 @@ struct MainView: View {
     
     var body: some View {
         NavigationStack {
-            List(tasks) { section in
-                Section {
-                    ForEach(section) { task in
-                        taskCell(task: task)
-                    }
-                } header: {
-                    Text(section.id!.capitalized)
-                }
-                .headerProminence(.increased)
+            List{
+                ForEach(tasks) { task in
+                    taskCell(task: task)
+                }.onDelete(perform: deleteTask)
                 .navigationTitle("Tasks")
             }
             .searchable(text: $searchText)
@@ -95,6 +90,14 @@ struct MainView: View {
             Text(task.getDifficulty.capitalized)
         }
         .padding(.vertical, 8)
+    }
+    
+    private func deleteTask(offsets: IndexSet) {
+        for offset in offsets {
+            managedObjectContext.delete(tasks[offset])
+        }
+        
+        try? managedObjectContext.save()
     }
 }
 

@@ -20,11 +20,7 @@ extension TaskObject {
     var getCreatedAt: String {
         guard let createdAt = createdAt else { return "N/A"}
         
-        let localDateFormatter = DateFormatter()
-        localDateFormatter.dateStyle = .short
-        localDateFormatter.timeStyle = .short
-        
-        return localDateFormatter.string(from: createdAt)
+        return createdAt.formatted(date: .numeric, time: .omitted)
     }
 }
 
