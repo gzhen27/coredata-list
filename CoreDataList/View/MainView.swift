@@ -51,7 +51,7 @@ struct MainView: View {
             .navigationTitle("Tasks (\(tasks.count))")
             .searchable(text: $searchText)
             .onChange(of: searchText) { text in
-                tasks.nsPredicate = text.isEmpty ? nil : NSPredicate(format: "name CONTAINS %@", text)
+                tasks.nsPredicate = text.isEmpty ? nil : NSPredicate(format: "name CONTAINS[cd] %@", text)
             }
             .toolbar {
                 toolbarFilterItem
