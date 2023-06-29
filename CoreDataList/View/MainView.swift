@@ -27,8 +27,11 @@ struct MainView: View {
         NavigationStack {
             List{
                 ForEach(tasks) { task in
-                    taskCell(task: task)
-                }.onDelete(perform: deleteTask)
+                    NavigationLink(destination: EditTaskView(task: task)) {
+                        taskCell(task: task)
+                    }
+                }
+                .onDelete(perform: deleteTask)
                 .navigationTitle("Tasks")
             }
             .searchable(text: $searchText)
