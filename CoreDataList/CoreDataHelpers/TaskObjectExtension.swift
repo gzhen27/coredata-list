@@ -36,7 +36,7 @@ extension TaskObject {
     static var tasks: NSFetchRequest<TaskObject> {
         let request = TaskObject.fetchRequest()
         
-        request.sortDescriptors = [NSSortDescriptor(keyPath: \TaskObject.difficulty, ascending: true)]
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \TaskObject.createdAt, ascending: false)]
         
         return request
     }

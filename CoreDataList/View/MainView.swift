@@ -33,6 +33,7 @@ struct MainView: View {
                 }
                 .onDelete(perform: deleteTask)
                 .navigationTitle("Tasks")
+                .navigationBarTitleDisplayMode(.inline)
             }
             .searchable(text: $searchText)
             .onChange(of: searchText) { text in
