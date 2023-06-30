@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EditTaskView: View {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) var dismiss
     @Environment(\.managedObjectContext) var managedObjectContext
     
     var task: FetchedResults<TaskObject>.Element
@@ -30,7 +30,7 @@ struct EditTaskView: View {
             closeBtn
             titleText
             .padding(.bottom, 50)
-            nameSection
+            nameEditingField
             .padding(.bottom, 30)
             difficultySection
             Spacer()
@@ -42,6 +42,7 @@ struct EditTaskView: View {
         .onAppear {
             difficulty = task.getDifficulty
             taskName = task.getName
+            print(!editingTaskName)
         }
     }
     
@@ -49,7 +50,7 @@ struct EditTaskView: View {
         HStack {
             Spacer()
             Button {
-                presentationMode.wrappedValue.dismiss()
+                dismiss()
             } label: {
                 Image(systemName: "xmark")
                     .font(.title3)
@@ -66,26 +67,6 @@ struct EditTaskView: View {
         }
     }
     
-    var nameSection: some View {
-        HStack {
-            if editingTaskName {
-                nameEditingField
-            } else {
-                Text("Task: ")
-                Text(taskName)
-                    .bold()
-            }
-            Spacer()
-            Button {
-                editingTaskName.toggle()
-                isEditngNameFocus.toggle()
-            } label: {
-                Text(editingTaskName ? "Done" : "Edit")
-            }
-        }
-        .animation(.easeInOut, value: editingTaskName)
-    }
-    
     var nameEditingField: some View {
         HStack {
             Image(systemName: "pencil.line")
@@ -95,7 +76,15 @@ struct EditTaskView: View {
                 .keyboardType(.asciiCapable)
                 .autocorrectionDisabled(true)
                 .focused($isEditngNameFocus)
+            Spacer()
+            Button {
+                editingTaskName.toggle()
+                isEditngNameFocus.toggle()
+            } label: {
+                Text(editingTaskName ? "Done" : "Edit")
+            }
         }
+        .animation(.easeInOut, value: editingTaskName)
         .padding()
         .overlay(RoundedRectangle(cornerRadius: 8).stroke(.gray, lineWidth: 1))
     }
@@ -114,7 +103,7 @@ struct EditTaskView: View {
             task.difficulty = difficulty
             task.name = taskName
             try? managedObjectContext.save()
-            presentationMode.wrappedValue.dismiss()
+            dismiss()
         } label: {
             Text("Save")
                 .padding(.vertical, 10)

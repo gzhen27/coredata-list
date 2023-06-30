@@ -16,6 +16,7 @@ struct DifficultyPickerView: View {
                 Text(d.localizedName).tag(d.rawValue)
             }
         }
+        .pickerStyle(.segmented)
     }
 }
 
