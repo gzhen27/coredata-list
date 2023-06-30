@@ -27,55 +27,14 @@ struct EditTaskView: View {
     
     var body: some View {
         VStack {
-            HStack {
-                Spacer()
-                Button {
-                    presentationMode.wrappedValue.dismiss()
-                } label: {
-                    Image(systemName: "xmark")
-                        .font(.title3)
-                }
-            }
+            closeBtn
+            titleText
             .padding(.bottom, 50)
-            HStack {
-                if editingTaskName {
-                    nameEditingField
-                } else {
-                    Text("Task: ")
-                    Text(taskName)
-                        .bold()
-                }
-                Spacer()
-                Button {
-                    editingTaskName.toggle()
-                    isEditngNameFocus.toggle()
-                } label: {
-                    Text(editingTaskName ? "Done" : "Edit")
-                }
-            }
-            .animation(.easeInOut, value: editingTaskName)
+            nameSection
             .padding(.bottom, 30)
-            HStack {
-                Text("Difficulty: ")
-                    .padding(.trailing, 8)
-                DifficultyPickerView(difficulty: $difficulty)
-                Spacer()
-            }
+            difficultySection
             Spacer()
-            Button {
-                task.difficulty = difficulty
-                task.name = taskName
-                try? managedObjectContext.save()
-                presentationMode.wrappedValue.dismiss()
-            } label: {
-                Text("Save")
-                    .padding(.vertical, 10)
-                    .frame(maxWidth: .infinity)
-                    .background(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.accentColor, lineWidth: 2)
-                    )
-            }
+            saveBtn
             .padding(.bottom)
         }
         .padding(.horizontal)
@@ -84,6 +43,47 @@ struct EditTaskView: View {
             difficulty = task.getDifficulty
             taskName = task.getName
         }
+    }
+    
+    var closeBtn: some View {
+        HStack {
+            Spacer()
+            Button {
+                presentationMode.wrappedValue.dismiss()
+            } label: {
+                Image(systemName: "xmark")
+                    .font(.title3)
+            }
+        }
+    }
+    
+    var titleText: some View {
+        HStack {
+            Text("Editing Task")
+                .font(.largeTitle)
+                .bold()
+            Spacer()
+        }
+    }
+    
+    var nameSection: some View {
+        HStack {
+            if editingTaskName {
+                nameEditingField
+            } else {
+                Text("Task: ")
+                Text(taskName)
+                    .bold()
+            }
+            Spacer()
+            Button {
+                editingTaskName.toggle()
+                isEditngNameFocus.toggle()
+            } label: {
+                Text(editingTaskName ? "Done" : "Edit")
+            }
+        }
+        .animation(.easeInOut, value: editingTaskName)
     }
     
     var nameEditingField: some View {
@@ -98,6 +98,32 @@ struct EditTaskView: View {
         }
         .padding()
         .overlay(RoundedRectangle(cornerRadius: 8).stroke(.gray, lineWidth: 1))
+    }
+    
+    var difficultySection: some View {
+        HStack {
+            Text("Difficulty: ")
+                .padding(.trailing, 8)
+            DifficultyPickerView(difficulty: $difficulty)
+            Spacer()
+        }
+    }
+    
+    var saveBtn: some View {
+        Button {
+            task.difficulty = difficulty
+            task.name = taskName
+            try? managedObjectContext.save()
+            presentationMode.wrappedValue.dismiss()
+        } label: {
+            Text("Save")
+                .padding(.vertical, 10)
+                .frame(maxWidth: .infinity)
+                .background(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color.accentColor, lineWidth: 2)
+                )
+        }
     }
 }
 
