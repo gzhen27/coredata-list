@@ -5,7 +5,7 @@
 //  Created by G Zhen on 6/20/23.
 //
 
-import Foundation
+import SwiftUI
 import CoreData
 
 extension TaskObject {
@@ -21,6 +21,14 @@ extension TaskObject {
         guard let createdAt = createdAt else { return "N/A"}
         
         return createdAt.formatted(date: .numeric, time: .omitted)
+    }
+    
+    enum Difficulty: String, CaseIterable, Equatable {
+        case easy = "Easy"
+        case medium = "Medium"
+        case hard = "Hard"
+        
+        var localizedName: LocalizedStringKey { LocalizedStringKey(rawValue) }
     }
 }
 

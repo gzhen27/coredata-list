@@ -12,16 +12,14 @@ struct EditTaskView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     
     var task: FetchedResults<TaskObject>.Element
-    @State private var difficulty = ""
+    
+    @State
+    private var difficulty = TaskObject.Difficulty.easy.rawValue
     
     var body: some View {
         VStack {
             Text(task.getName)
-            Picker("Difficulty", selection: $difficulty) {
-                Text("Easy").tag("easy")
-                Text("Medium").tag("medium")
-                Text("Hard").tag("hard")
-            }
+            DifficultyPickerView(difficulty: $difficulty)
             Spacer()
             Button {
                 task.difficulty = difficulty

@@ -90,7 +90,7 @@ struct MainView: View {
                     .font(.footnote)
             }
             Spacer()
-            Text(task.getDifficulty.capitalized)
+            Text(task.getDifficulty)
         }
         .padding(.vertical, 8)
     }
