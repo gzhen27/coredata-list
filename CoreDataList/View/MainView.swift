@@ -44,7 +44,7 @@ struct MainView: View {
                 toolbarPlusItem
             }
         }
-        .sheet(isPresented: $showTaskCreateView) {
+        .fullScreenCover(isPresented: $showTaskCreateView) {
             TaskCreationView()
         }
     }

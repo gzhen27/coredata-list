@@ -23,6 +23,22 @@ struct TaskCreationView: View {
     @FocusState
     private var isTypingMode: Bool
     
+    var body: some View {
+        VStack {
+            closeBtn(dismiss: dismiss)
+            customHeaderSection(text: "Create Task")
+            nameInputView
+                .padding(.bottom, 28)
+            DifficultyPickerView(difficulty: $difficulty)
+            Spacer()
+        }
+        .padding(.horizontal)
+        .presentationCornerRadius(8)
+        .onAppear {
+            isTypingMode = true
+        }
+    }
+    
     var nameInputView: some View {
         VStack {
             HStack {
@@ -33,7 +49,6 @@ struct TaskCreationView: View {
                     .keyboardType(.asciiCapable)
                     .autocorrectionDisabled(true)
                     .focused($isTypingMode)
-                DifficultyPickerView(difficulty: $difficulty)
                 saveBtn
                     .foregroundColor(name.isEmpty ? .gray : .accentColor)
                     .disabled(name.isEmpty)
@@ -59,20 +74,6 @@ struct TaskCreationView: View {
             }
         } label: {
             Text("Save")
-        }
-    }
-    
-    var body: some View {
-        VStack {
-            nameInputView
-                .padding(.top, 28)
-            Spacer()
-        }
-        .padding(.horizontal)
-        .presentationDetents([.fraction(0.10)])
-        .presentationCornerRadius(8)
-        .onAppear {
-            isTypingMode = true
         }
     }
 }

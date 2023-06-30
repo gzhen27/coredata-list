@@ -27,9 +27,8 @@ struct EditTaskView: View {
     
     var body: some View {
         VStack {
-            closeBtn
-            titleText
-            .padding(.bottom, 50)
+            closeBtn(dismiss: dismiss)
+            customHeaderSection(text: "Edit Task")
             nameEditingField
             .padding(.bottom, 30)
             difficultySection
@@ -42,28 +41,6 @@ struct EditTaskView: View {
         .onAppear {
             difficulty = task.getDifficulty
             taskName = task.getName
-            print(!editingTaskName)
-        }
-    }
-    
-    var closeBtn: some View {
-        HStack {
-            Spacer()
-            Button {
-                dismiss()
-            } label: {
-                Image(systemName: "xmark")
-                    .font(.title3)
-            }
-        }
-    }
-    
-    var titleText: some View {
-        HStack {
-            Text("Editing Task")
-                .font(.largeTitle)
-                .bold()
-            Spacer()
         }
     }
     
