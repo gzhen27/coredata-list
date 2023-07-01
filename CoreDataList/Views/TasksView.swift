@@ -88,13 +88,8 @@ struct TasksView: View {
             VStack(alignment: .leading) {
                 Text(task.getName)
                     .font(.title2)
-                if let modifiedAt = task.modifiedAt {
-                    Text("last modified at \(modifiedAt.formatted(date: .numeric, time: .omitted))")
-                        .font(.footnote)
-                } else {
-                    Text("created at \(task.getCreatedAt)")
-                        .font(.footnote)
-                }
+                Text("Due on \(task.getDueOn)")
+                    .font(.footnote)
             }
             Spacer()
             Text(task.getDifficulty)

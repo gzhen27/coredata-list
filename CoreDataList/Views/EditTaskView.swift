@@ -22,18 +22,22 @@ struct EditTaskView: View {
     @State
     private var difficulty = TaskObject.Difficulty.easy.rawValue
     
+    @State
+    private var dueOn = Date()
+    
     var body: some View {
         VStack {
             HeaderView(content: "Edit Task")
-            TaskInfoForm(name: $name, difficulty: $difficulty, type: .edit)
+            TaskInfoForm(name: $name, difficulty: $difficulty, dueOn: $dueOn, type: .edit)
             Spacer()
-            SaveButtonView(task: task, taskInfo: Task(name: name, difficulty: difficulty))
+            SaveButtonView(task: task, taskInfo: Task(name: name, difficulty: difficulty, dueOn: dueOn))
         }
         .padding(.horizontal)
         .navigationBarBackButtonHidden(true)
         .onAppear {
             difficulty = task.getDifficulty
             name = task.getName
+            dueOn = task.dueOn ?? Date()
         }
     }
 }

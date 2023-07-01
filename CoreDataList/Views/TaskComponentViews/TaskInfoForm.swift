@@ -14,19 +14,32 @@ struct TaskInfoForm: View {
     @Binding
     var difficulty: String
     
+    @Binding
+    var dueOn: Date
+    
     let type: ActionType
     
     var body: some View {
         VStack {
             NameTextFieldView(name: $name, type: type)
-                .padding(.bottom, 28)
+                .padding(.bottom)
             DifficultyPickerView(difficulty: $difficulty)
+                .padding(.bottom)
+            VStack {
+                HStack {
+                    Text("Due Date:")
+                        .font(.headline)
+                    Spacer()
+                    DatePicker("Due Date", selection: $dueOn)
+                        .labelsHidden()
+                }
+            }
         }
     }
 }
 
 struct TaskInfoForm_Previews: PreviewProvider {
     static var previews: some View {
-        TaskInfoForm(name: .constant("Task name"), difficulty: .constant("Easy"), type: .create)
+        TaskInfoForm(name: .constant("Task name"), difficulty: .constant("Easy"), dueOn: .constant(Date()), type: .create)
     }
 }

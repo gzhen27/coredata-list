@@ -18,9 +18,15 @@ extension TaskObject {
     }
     
     var getCreatedAt: String {
-        guard let createdAt = createdAt else { return "N/A"}
+        guard let createdAt = createdAt else { return "N/A" }
         
         return createdAt.formatted(date: .numeric, time: .omitted)
+    }
+    
+    var getDueOn: String {
+        guard let dueOn = dueOn else { return "N/A" }
+        
+        return dueOn.formatted(date: .numeric, time: .omitted)
     }
     
     enum Difficulty: String, CaseIterable, Equatable {

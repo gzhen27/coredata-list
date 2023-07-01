@@ -20,12 +20,15 @@ struct CreateTaskView: View {
     @State
     private var difficulty = TaskObject.Difficulty.easy.rawValue
     
+    @State
+    private var dueOn = Date()
+    
     var body: some View {
         VStack {
             HeaderView(content: "Create Task")
-            TaskInfoForm(name: $name, difficulty: $difficulty, type: .create)
+            TaskInfoForm(name: $name, difficulty: $difficulty, dueOn: $dueOn, type: .create)
             Spacer()
-            SaveButtonView(task: nil, taskInfo: Task(name: name, difficulty: difficulty))
+            SaveButtonView(task: nil, taskInfo: Task(name: name, difficulty: difficulty, dueOn: dueOn))
         }
         .padding(.horizontal)
         .presentationCornerRadius(8)
