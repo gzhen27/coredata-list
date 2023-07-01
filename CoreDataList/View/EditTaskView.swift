@@ -19,19 +19,13 @@ struct EditTaskView: View {
     @State
     private var difficulty = TaskObject.Difficulty.easy.rawValue
     
-    @State
-    private var editingTaskName = false
-    
-    @FocusState
-    private var isEditngNameFocus: Bool
-    
     var body: some View {
         VStack {
             closeBtn(dismiss: dismiss)
             customHeaderSection(text: "Edit Task")
-            nameEditingField
+            NameTextFieldView(name: $taskName, type: .edit)
             .padding(.bottom, 30)
-            difficultySection
+            DifficultyPickerView(difficulty: $difficulty)
             Spacer()
             saveBtn
             .padding(.bottom)
@@ -41,37 +35,6 @@ struct EditTaskView: View {
         .onAppear {
             difficulty = task.getDifficulty
             taskName = task.getName
-        }
-    }
-    
-    var nameEditingField: some View {
-        HStack {
-            Image(systemName: "pencil.line")
-                .foregroundColor(.gray)
-                .font(.headline)
-            TextField("task name", text: $taskName)
-                .keyboardType(.asciiCapable)
-                .autocorrectionDisabled(true)
-                .focused($isEditngNameFocus)
-            Spacer()
-            Button {
-                editingTaskName.toggle()
-                isEditngNameFocus.toggle()
-            } label: {
-                Text(editingTaskName ? "Done" : "Edit")
-            }
-        }
-        .animation(.easeInOut, value: editingTaskName)
-        .padding()
-        .overlay(RoundedRectangle(cornerRadius: 8).stroke(.gray, lineWidth: 1))
-    }
-    
-    var difficultySection: some View {
-        HStack {
-            Text("Difficulty: ")
-                .padding(.trailing, 8)
-            DifficultyPickerView(difficulty: $difficulty)
-            Spacer()
         }
     }
     

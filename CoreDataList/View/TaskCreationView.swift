@@ -20,45 +20,21 @@ struct TaskCreationView: View {
     @State
     private var difficulty = TaskObject.Difficulty.easy.rawValue
     
-    @FocusState
-    private var isTypingMode: Bool
-    
     var body: some View {
         VStack {
             closeBtn(dismiss: dismiss)
             customHeaderSection(text: "Create Task")
-            nameInputView
+            NameTextFieldView(name: $name, type: .create)
                 .padding(.bottom, 28)
             DifficultyPickerView(difficulty: $difficulty)
             Spacer()
+            saveBtn
+                .foregroundColor(name.isEmpty ? .gray : .accentColor)
+                .disabled(name.isEmpty)
+                .padding(.bottom)
         }
         .padding(.horizontal)
         .presentationCornerRadius(8)
-        .onAppear {
-            isTypingMode = true
-        }
-    }
-    
-    var nameInputView: some View {
-        VStack {
-            HStack {
-                Image(systemName: "pencil.line")
-                    .foregroundColor(.gray)
-                    .font(.headline)
-                TextField("task name", text: $name)
-                    .keyboardType(.asciiCapable)
-                    .autocorrectionDisabled(true)
-                    .focused($isTypingMode)
-                saveBtn
-                    .foregroundColor(name.isEmpty ? .gray : .accentColor)
-                    .disabled(name.isEmpty)
-            }
-            .padding()
-            .overlay(RoundedRectangle(cornerRadius: 8).stroke(.gray, lineWidth: 1))
-        }
-        .onTapGesture {
-            isTypingMode = false
-        }
     }
     
     var saveBtn: some View {
@@ -74,6 +50,12 @@ struct TaskCreationView: View {
             }
         } label: {
             Text("Save")
+                .padding(.vertical, 10)
+                .frame(maxWidth: .infinity)
+                .background(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color.accentColor, lineWidth: 2)
+                )
         }
     }
 }

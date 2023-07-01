@@ -26,5 +26,5 @@ func customHeaderSection(text content: String) -> some View {
             .bold()
         Spacer()
     }
-    .padding(.bottom, 50)
+    .padding(.bottom, 36)
 }
