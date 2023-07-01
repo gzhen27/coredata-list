@@ -16,6 +16,7 @@
 		EB1D88432A4F5707006681BE /* DifficultyPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1D88422A4F5707006681BE /* DifficultyPickerView.swift */; };
 		EB1D88452A4F8829006681BE /* HelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1D88442A4F8829006681BE /* HelperView.swift */; };
 		EB1D88472A4FAD4B006681BE /* NameTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1D88462A4FAD4B006681BE /* NameTextFieldView.swift */; };
+		EB1D88492A4FCC55006681BE /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1D88482A4FCC55006681BE /* Task.swift */; };
 		EB8A88772A42717E00A26AC4 /* TasksMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8A88762A42717E00A26AC4 /* TasksMockData.swift */; };
 		EB8A887C2A427BB600A26AC4 /* TaskObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8A887B2A427BB600A26AC4 /* TaskObjectExtension.swift */; };
 		EBCC19342A4E145D00FCCCCC /* EditTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCC19332A4E145D00FCCCCC /* EditTaskView.swift */; };
@@ -33,6 +34,7 @@
 		EB1D88422A4F5707006681BE /* DifficultyPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyPickerView.swift; sourceTree = "<group>"; };
 		EB1D88442A4F8829006681BE /* HelperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperView.swift; sourceTree = "<group>"; };
 		EB1D88462A4FAD4B006681BE /* NameTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTextFieldView.swift; sourceTree = "<group>"; };
+		EB1D88482A4FCC55006681BE /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		EB8A88762A42717E00A26AC4 /* TasksMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksMockData.swift; sourceTree = "<group>"; };
 		EB8A887B2A427BB600A26AC4 /* TaskObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskObjectExtension.swift; sourceTree = "<group>"; };
 		EBCC19332A4E145D00FCCCCC /* EditTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskView.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 		EB14FD072A3BDB8800AADD76 /* CoreDataList */ = {
 			isa = PBXGroup;
 			children = (
+				EB1D884A2A4FCC5E006681BE /* Data Models */,
 				EBCF84B12A3CFCEE0028FE0B /* View */,
 				EB14FD192A3BE45900AADD76 /* CoreDataHelpers */,
 				EB14FD082A3BDB8800AADD76 /* CoreDataListApp.swift */,
@@ -95,6 +98,14 @@
 				EB14FD162A3BE1DF00AADD76 /* Tasks.xcdatamodeld */,
 			);
 			path = CoreDataHelpers;
+			sourceTree = "<group>";
+		};
+		EB1D884A2A4FCC5E006681BE /* Data Models */ = {
+			isa = PBXGroup;
+			children = (
+				EB1D88482A4FCC55006681BE /* Task.swift */,
+			);
+			path = "Data Models";
 			sourceTree = "<group>";
 		};
 		EBCF84B12A3CFCEE0028FE0B /* View */ = {
@@ -184,6 +195,7 @@
 				EBCC19342A4E145D00FCCCCC /* EditTaskView.swift in Sources */,
 				EB1D88472A4FAD4B006681BE /* NameTextFieldView.swift in Sources */,
 				EB1D88432A4F5707006681BE /* DifficultyPickerView.swift in Sources */,
+				EB1D88492A4FCC55006681BE /* Task.swift in Sources */,
 				EB8A887C2A427BB600A26AC4 /* TaskObjectExtension.swift in Sources */,
 				EB14FD1C2A3BE4AC00AADD76 /* TasksContainer.swift in Sources */,
 				EB8A88772A42717E00A26AC4 /* TasksMockData.swift in Sources */,

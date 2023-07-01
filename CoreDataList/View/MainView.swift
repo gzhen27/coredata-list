@@ -35,6 +35,7 @@ struct MainView: View {
                 .navigationTitle("Tasks")
                 .navigationBarTitleDisplayMode(.inline)
             }
+            .listStyle(PlainListStyle())
             .searchable(text: $searchText)
             .onChange(of: searchText) { text in
                 tasks.nsPredicate = text.isEmpty ? nil : NSPredicate(format: "name CONTAINS[cd] %@", text)

@@ -28,35 +28,13 @@ struct TaskCreationView: View {
                 .padding(.bottom, 28)
             DifficultyPickerView(difficulty: $difficulty)
             Spacer()
-            saveBtn
+            saveTaskbtn(task: nil, taskInfo: Task(name: name, difficulty: difficulty), moc: managedObjectContext, dismiss: dismiss)
                 .foregroundColor(name.isEmpty ? .gray : .accentColor)
                 .disabled(name.isEmpty)
                 .padding(.bottom)
         }
         .padding(.horizontal)
         .presentationCornerRadius(8)
-    }
-    
-    var saveBtn: some View {
-        Button {
-            if !name.isEmpty {
-                let task = TaskObject(context: managedObjectContext)
-                task.name = name
-                task.isLike = false
-                task.createdAt = Date.now
-                task.difficulty = difficulty
-                try? managedObjectContext.save()
-                dismiss()
-            }
-        } label: {
-            Text("Save")
-                .padding(.vertical, 10)
-                .frame(maxWidth: .infinity)
-                .background(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.accentColor, lineWidth: 2)
-                )
-        }
     }
 }
 
