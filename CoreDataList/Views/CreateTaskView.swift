@@ -23,9 +23,7 @@ struct CreateTaskView: View {
     var body: some View {
         VStack {
             HeaderView(content: "Create Task")
-            NameTextFieldView(name: $name, type: .create)
-                .padding(.bottom, 28)
-            DifficultyPickerView(difficulty: $difficulty)
+            TaskInfoForm(name: $name, difficulty: $difficulty, type: .create)
             Spacer()
             SaveButtonView(task: nil, taskInfo: Task(name: name, difficulty: difficulty))
         }

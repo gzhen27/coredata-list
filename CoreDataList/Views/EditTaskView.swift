@@ -25,9 +25,7 @@ struct EditTaskView: View {
     var body: some View {
         VStack {
             HeaderView(content: "Edit Task")
-            NameTextFieldView(name: $name, type: .edit)
-            .padding(.bottom, 30)
-            DifficultyPickerView(difficulty: $difficulty)
+            TaskInfoForm(name: $name, difficulty: $difficulty, type: .edit)
             Spacer()
             SaveButtonView(task: task, taskInfo: Task(name: name, difficulty: difficulty))
         }
