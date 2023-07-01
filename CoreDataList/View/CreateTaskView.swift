@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TaskCreationView: View {
+struct CreateTaskView: View {
     @Environment(\.dismiss)
     private var dismiss
     
@@ -22,16 +22,12 @@ struct TaskCreationView: View {
     
     var body: some View {
         VStack {
-            closeBtn(dismiss: dismiss)
-            customHeaderSection(text: "Create Task")
+            HeaderView(content: "Create Task")
             NameTextFieldView(name: $name, type: .create)
                 .padding(.bottom, 28)
             DifficultyPickerView(difficulty: $difficulty)
             Spacer()
-            saveTaskbtn(task: nil, taskInfo: Task(name: name, difficulty: difficulty), moc: managedObjectContext, dismiss: dismiss)
-                .foregroundColor(name.isEmpty ? .gray : .accentColor)
-                .disabled(name.isEmpty)
-                .padding(.bottom)
+            SaveButtonView(task: nil, taskInfo: Task(name: name, difficulty: difficulty))
         }
         .padding(.horizontal)
         .presentationCornerRadius(8)
@@ -40,6 +36,6 @@ struct TaskCreationView: View {
 
 struct TaskCreationView_Previews: PreviewProvider {
     static var previews: some View {
-        TaskCreationView()
+        CreateTaskView()
     }
 }

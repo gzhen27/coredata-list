@@ -24,14 +24,12 @@ struct EditTaskView: View {
     
     var body: some View {
         VStack {
-            closeBtn(dismiss: dismiss)
-            customHeaderSection(text: "Edit Task")
+            HeaderView(content: "Edit Task")
             NameTextFieldView(name: $name, type: .edit)
             .padding(.bottom, 30)
             DifficultyPickerView(difficulty: $difficulty)
             Spacer()
-            saveTaskbtn(task: task, taskInfo: Task(name: name, difficulty: difficulty), moc: managedObjectContext, dismiss: dismiss)
-            .padding(.bottom)
+            SaveButtonView(task: task, taskInfo: Task(name: name, difficulty: difficulty))
         }
         .padding(.horizontal)
         .navigationBarBackButtonHidden(true)

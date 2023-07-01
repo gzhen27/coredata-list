@@ -1,5 +1,5 @@
 //
-//  Main.swift
+//  TasksView.swift
 //  CoreDataList
 //
 //  Created by G Zhen on 6/15/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MainView: View {
+struct TasksView: View {
     @Environment(\.managedObjectContext)
     private var managedObjectContext
     
@@ -46,7 +46,7 @@ struct MainView: View {
             }
         }
         .fullScreenCover(isPresented: $showTaskCreateView) {
-            TaskCreationView()
+            CreateTaskView()
         }
     }
     
@@ -108,7 +108,7 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        TasksView()
             .environment(\.managedObjectContext, TasksContainer(devMode: true).persistentContainer.viewContext)
     }
 }

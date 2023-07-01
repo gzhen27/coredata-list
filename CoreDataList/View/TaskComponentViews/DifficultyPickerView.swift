@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct DifficultyPickerView: View {
-    @Binding var difficulty: String
+    @Binding
+    var difficulty: String
     
     var body: some View {
         VStack {
