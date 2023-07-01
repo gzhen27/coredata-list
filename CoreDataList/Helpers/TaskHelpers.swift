@@ -12,6 +12,7 @@ func saveTask(task: FetchedResults<TaskObject>.Element? = nil, taskInfo: Task, m
     if let task = task {
         task.name = taskInfo.name
         task.difficulty = taskInfo.difficulty
+        task.modifiedAt = taskInfo.modifiedAt
     } else {
         let task = TaskObject(context: moc)
         task.name = taskInfo.name

@@ -79,7 +79,7 @@
 			children = (
 				EB87B4E52A50D62F00031D00 /* Helpers */,
 				EB1D884A2A4FCC5E006681BE /* DataModels */,
-				EBCF84B12A3CFCEE0028FE0B /* View */,
+				EBCF84B12A3CFCEE0028FE0B /* Views */,
 				EB14FD192A3BE45900AADD76 /* CoreDataHelpers */,
 				EB14FD082A3BDB8800AADD76 /* CoreDataListApp.swift */,
 				EB14FD0C2A3BDB8900AADD76 /* Assets.xcassets */,
@@ -149,7 +149,7 @@
 			path = Headers;
 			sourceTree = "<group>";
 		};
-		EBCF84B12A3CFCEE0028FE0B /* View */ = {
+		EBCF84B12A3CFCEE0028FE0B /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				EB36F4322A50DBC6005A9377 /* TaskComponentViews */,
@@ -159,7 +159,7 @@
 				EBCF84B22A3CFD250028FE0B /* CreateTaskView.swift */,
 				EBCC19332A4E145D00FCCCCC /* EditTaskView.swift */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

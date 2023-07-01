@@ -12,4 +12,5 @@ struct Task {
     let difficulty: String
     let isLike: Bool = false
     let createdAt: Date = Date.now
+    let modifiedAt: Date = Date.now
 }
