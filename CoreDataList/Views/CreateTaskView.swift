@@ -26,7 +26,7 @@ struct CreateTaskView: View {
     var body: some View {
         VStack {
             HeaderView(content: "Create Task")
-            TaskInfoForm(name: $name, difficulty: $difficulty, dueOn: $dueOn, type: .create)
+            TaskInfoForm(name: $name, difficulty: $difficulty, dueOn: $dueOn, type: .create, createdAt: nil, modifiedAt: nil)
             Spacer()
             SaveButtonView(task: nil, taskInfo: Task(name: name, difficulty: difficulty, dueOn: dueOn))
         }

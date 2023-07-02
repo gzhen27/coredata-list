@@ -28,7 +28,7 @@ struct EditTaskView: View {
     var body: some View {
         VStack {
             HeaderView(content: "Edit Task")
-            TaskInfoForm(name: $name, difficulty: $difficulty, dueOn: $dueOn, type: .edit)
+            TaskInfoForm(name: $name, difficulty: $difficulty, dueOn: $dueOn, type: .edit, createdAt: task.getCreatedAt, modifiedAt: task.getModifiedAt)
             Spacer()
             SaveButtonView(task: task, taskInfo: Task(name: name, difficulty: difficulty, dueOn: dueOn))
         }

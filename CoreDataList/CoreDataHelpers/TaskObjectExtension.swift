@@ -23,6 +23,12 @@ extension TaskObject {
         return createdAt.formatted(date: .numeric, time: .omitted)
     }
     
+    var getModifiedAt: String {
+        guard let modifiedAt = modifiedAt else { return "N/A" }
+        
+        return modifiedAt.formatted(date: .numeric, time: .omitted)
+    }
+    
     var getDueOn: String {
         guard let dueOn = dueOn else { return "N/A" }
         

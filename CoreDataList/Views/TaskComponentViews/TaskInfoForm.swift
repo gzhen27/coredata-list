@@ -18,6 +18,8 @@ struct TaskInfoForm: View {
     var dueOn: Date
     
     let type: ActionType
+    let createdAt: String?
+    let modifiedAt: String?
     
     var body: some View {
         VStack {
@@ -25,13 +27,28 @@ struct TaskInfoForm: View {
                 .padding(.bottom)
             DifficultyPickerView(difficulty: $difficulty)
                 .padding(.bottom)
-            VStack {
-                HStack {
-                    Text("Due Date:")
-                        .font(.headline)
-                    Spacer()
-                    DatePicker("Due Date", selection: $dueOn)
-                        .labelsHidden()
+            DueDatePicker(dueOn: $dueOn)
+                .padding(.bottom)
+            Group {
+                if let createdAt = createdAt {
+                    HStack {
+                        Text("Created At:")
+                            .font(.headline)
+                        Spacer()
+                        Text(createdAt)
+                        
+                    }
+                    .padding(.bottom)
+                }
+                if let modifiedAt = modifiedAt {
+                    HStack {
+                        Text("Last modified:")
+                            .font(.headline)
+                        Spacer()
+                        Text(modifiedAt)
+                        
+                    }
+                    .padding(.bottom)
                 }
             }
         }
@@ -40,6 +57,6 @@ struct TaskInfoForm: View {
 
 struct TaskInfoForm_Previews: PreviewProvider {
     static var previews: some View {
-        TaskInfoForm(name: .constant("Task name"), difficulty: .constant("Easy"), dueOn: .constant(Date()), type: .create)
+        TaskInfoForm(name: .constant("Task name"), difficulty: .constant("Easy"), dueOn: .constant(Date()), type: .create, createdAt: nil, modifiedAt: nil)
     }
 }
