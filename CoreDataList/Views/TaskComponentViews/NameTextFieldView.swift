@@ -11,7 +11,7 @@ struct NameTextFieldView: View {
     @Binding
     var name: String
     
-    let type: ActionType
+    let type: SaveAction
     
     var body: some View {
         VStack {
@@ -32,11 +32,6 @@ struct NameTextFieldView: View {
             .overlay(RoundedRectangle(cornerRadius: 8).stroke(.gray, lineWidth: 1))
         }
     }
-}
-
-enum ActionType {
-    case create
-    case edit
 }
 
 struct NameTextFieldView_Previews: PreviewProvider {

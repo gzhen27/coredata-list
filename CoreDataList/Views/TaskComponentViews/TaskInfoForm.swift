@@ -17,7 +17,7 @@ struct TaskInfoForm: View {
     @Binding
     var dueOn: Date
     
-    let type: ActionType
+    let type: SaveAction
     let createdAt: String?
     let modifiedAt: String?
     
