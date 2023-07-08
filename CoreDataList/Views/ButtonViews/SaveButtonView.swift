@@ -14,6 +14,12 @@ struct SaveButtonView: View {
     @Environment(\.dismiss)
     var dismiss
     
+    @State
+    private var errorMessage = ""
+    
+    @State
+    private var showErrorMessage = false
+    
     let task: FetchedResults<TaskObject>.Element?
     let taskInfo: Task
     let action: SaveAction
@@ -21,13 +27,20 @@ struct SaveButtonView: View {
     var body: some View {
         Button {
             if let task = task {
-                saveTask(task: task, taskInfo: taskInfo, moc: managedObjectContext)
+                let (result, message) = saveTask(task: task, taskInfo: taskInfo, moc: managedObjectContext)
+                if result == .failure {
+                    errorMessage = message
+                    showErrorMessage.toggle()
+                }
             } else {
                 let newTask = TaskObject(context: managedObjectContext)
                 newTask.createdAt = taskInfo.createdAt
-                saveTask(task: newTask, taskInfo: taskInfo, moc: managedObjectContext)
+                let (result, message) = saveTask(task: newTask, taskInfo: taskInfo, moc: managedObjectContext)
+                if result == .failure {
+                    errorMessage = message
+                    showErrorMessage.toggle()
+                }
             }
-            dismiss()
         } label: {
             Text("Save")
                 .padding(.vertical, 10)
@@ -40,12 +53,14 @@ struct SaveButtonView: View {
         .foregroundColor(taskInfo.name.isEmpty ? .gray : .accentColor)
         .disabled(taskInfo.name.isEmpty)
         .padding(.bottom)
+        .alert("Error", isPresented: $showErrorMessage) {
+            Button("OK", role: .cancel) {
+                dismiss()
+            }
+        } message: {
+            Text(errorMessage)
+        }
     }
-}
-
-enum SaveAction {
-    case create
-    case edit
 }
 
 struct SaveButtonView_Previews: PreviewProvider {
