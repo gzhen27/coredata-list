@@ -30,7 +30,7 @@ struct EditTaskView: View {
             HeaderView(content: "Edit Task")
             TaskInfoForm(name: $name, difficulty: $difficulty, dueOn: $dueOn, type: .edit, createdAt: task.getCreatedAt, modifiedAt: task.getModifiedAt)
             Spacer()
-            SaveButtonView(task: task, taskInfo: Task(name: name, difficulty: difficulty, dueOn: dueOn))
+            SaveButtonView(task: task, taskInfo: Task(name: name, difficulty: difficulty, dueOn: dueOn), action: .edit)
         }
         .padding(.horizontal)
         .navigationBarBackButtonHidden(true)

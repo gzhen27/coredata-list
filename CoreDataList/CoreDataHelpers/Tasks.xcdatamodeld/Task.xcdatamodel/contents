@@ -8,6 +8,11 @@
         <attribute name="isLike" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="modifiedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="name"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <fetchRequest name="FetchRequest" entity="TaskObject" predicateString="isLike == 0"/>
 </model>

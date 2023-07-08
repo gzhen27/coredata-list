@@ -8,21 +8,30 @@
 import SwiftUI
 import CoreData
 
-func saveTask(task: FetchedResults<TaskObject>.Element? = nil, taskInfo: Task, moc: NSManagedObjectContext) {
-    if let task = task {
-        task.name = taskInfo.name
-        task.difficulty = taskInfo.difficulty
-        task.modifiedAt = taskInfo.modifiedAt
-        task.dueOn = taskInfo.dueOn
-    } else {
-        let task = TaskObject(context: moc)
-        task.name = taskInfo.name
-        task.difficulty = taskInfo.difficulty
-        task.isLike = taskInfo.isLike
-        task.createdAt = taskInfo.createdAt
-        task.modifiedAt = taskInfo.modifiedAt
-        task.dueOn = taskInfo.dueOn
-    }
+func saveTask(task: FetchedResults<TaskObject>.Element, taskInfo: Task, moc: NSManagedObjectContext) {
+    task.name = taskInfo.name
+    task.difficulty = taskInfo.difficulty
+    task.isLike = taskInfo.isLike
+    task.modifiedAt = taskInfo.modifiedAt
+    task.dueOn = taskInfo.dueOn
     
-    try? moc.save()
+    if moc.hasChanges {
+        do {
+            try moc.save()
+        } catch let e as CocoaError {
+            let errDict = e.userInfo
+            if let conflictList = errDict[NSPersistentStoreSaveConflictsErrorKey] {
+                let constraintConflicts = conflictList as! [NSConstraintConflict]
+                
+                for conflict in constraintConflicts {
+                    for (_, value) in conflict.constraintValues {
+                        print("The task \(value) is already exists.")
+                    }
+                }
+            }
+            moc.delete(task)
+        } catch {
+            print("Errors occurred: \(error.localizedDescription)")
+        }
+    }
 }

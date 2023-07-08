@@ -16,10 +16,17 @@ struct SaveButtonView: View {
     
     let task: FetchedResults<TaskObject>.Element?
     let taskInfo: Task
+    let action: SaveAction
     
     var body: some View {
         Button {
-            saveTask(task: task, taskInfo: taskInfo, moc: managedObjectContext)
+            if let task = task {
+                saveTask(task: task, taskInfo: taskInfo, moc: managedObjectContext)
+            } else {
+                let newTask = TaskObject(context: managedObjectContext)
+                newTask.createdAt = taskInfo.createdAt
+                saveTask(task: newTask, taskInfo: taskInfo, moc: managedObjectContext)
+            }
             dismiss()
         } label: {
             Text("Save")
@@ -36,8 +43,13 @@ struct SaveButtonView: View {
     }
 }
 
+enum SaveAction {
+    case create
+    case edit
+}
+
 struct SaveButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        SaveButtonView(task: nil, taskInfo: Task(name: "Save Button", difficulty: "Easy"))
+        SaveButtonView(task: nil, taskInfo: Task(name: "Save Button", difficulty: "Easy"), action: .create)
     }
 }

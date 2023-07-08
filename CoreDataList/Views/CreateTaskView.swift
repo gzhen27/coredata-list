@@ -28,7 +28,7 @@ struct CreateTaskView: View {
             HeaderView(content: "Create Task")
             TaskInfoForm(name: $name, difficulty: $difficulty, dueOn: $dueOn, type: .create, createdAt: nil, modifiedAt: nil)
             Spacer()
-            SaveButtonView(task: nil, taskInfo: Task(name: name, difficulty: difficulty, dueOn: dueOn))
+            SaveButtonView(task: nil, taskInfo: Task(name: name, difficulty: difficulty, dueOn: dueOn), action: .create)
         }
         .padding(.horizontal)
         .presentationCornerRadius(8)
