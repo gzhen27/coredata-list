@@ -22,6 +22,8 @@
 		EB36F4362A50F55B005A9377 /* DueDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB36F4352A50F55B005A9377 /* DueDatePicker.swift */; };
 		EB87B4E72A50D67300031D00 /* TaskHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB87B4E62A50D67300031D00 /* TaskHelpers.swift */; };
 		EB87B4E92A50D6E700031D00 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB87B4E82A50D6E700031D00 /* HeaderView.swift */; };
+		EB89F9CA2A63737D003637F0 /* TaskTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB89F9C92A63737D003637F0 /* TaskTypeView.swift */; };
+		EB89F9CC2A63760B003637F0 /* TaskTypeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB89F9CB2A63760B003637F0 /* TaskTypeExtension.swift */; };
 		EB8A88772A42717E00A26AC4 /* TasksMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8A88762A42717E00A26AC4 /* TasksMockData.swift */; };
 		EB8A887C2A427BB600A26AC4 /* TaskObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8A887B2A427BB600A26AC4 /* TaskObjectExtension.swift */; };
 		EBCC19342A4E145D00FCCCCC /* EditTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCC19332A4E145D00FCCCCC /* EditTaskView.swift */; };
@@ -45,6 +47,8 @@
 		EB36F4352A50F55B005A9377 /* DueDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DueDatePicker.swift; sourceTree = "<group>"; };
 		EB87B4E62A50D67300031D00 /* TaskHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskHelpers.swift; sourceTree = "<group>"; };
 		EB87B4E82A50D6E700031D00 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		EB89F9C92A63737D003637F0 /* TaskTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTypeView.swift; sourceTree = "<group>"; };
+		EB89F9CB2A63760B003637F0 /* TaskTypeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTypeExtension.swift; sourceTree = "<group>"; };
 		EB8A88762A42717E00A26AC4 /* TasksMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksMockData.swift; sourceTree = "<group>"; };
 		EB8A887B2A427BB600A26AC4 /* TaskObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskObjectExtension.swift; sourceTree = "<group>"; };
 		EBCC19332A4E145D00FCCCCC /* EditTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskView.swift; sourceTree = "<group>"; };
@@ -105,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				EB8A887B2A427BB600A26AC4 /* TaskObjectExtension.swift */,
+				EB89F9CB2A63760B003637F0 /* TaskTypeExtension.swift */,
 				EB14FD1B2A3BE4AC00AADD76 /* TasksContainer.swift */,
 				EB14FD162A3BE1DF00AADD76 /* Tasks.xcdatamodeld */,
 			);
@@ -162,6 +167,7 @@
 				EB36F42D2A50D833005A9377 /* ButtonViews */,
 				EB87B4EA2A50D78C00031D00 /* Headers */,
 				EB14FD0A2A3BDB8800AADD76 /* TasksView.swift */,
+				EB89F9C92A63737D003637F0 /* TaskTypeView.swift */,
 				EBCF84B22A3CFD250028FE0B /* CreateTaskView.swift */,
 				EBCC19332A4E145D00FCCCCC /* EditTaskView.swift */,
 			);
@@ -247,7 +253,9 @@
 				EB36F4312A50D8F6005A9377 /* SaveButtonView.swift in Sources */,
 				EB8A887C2A427BB600A26AC4 /* TaskObjectExtension.swift in Sources */,
 				EB14FD1C2A3BE4AC00AADD76 /* TasksContainer.swift in Sources */,
+				EB89F9CA2A63737D003637F0 /* TaskTypeView.swift in Sources */,
 				EB8A88772A42717E00A26AC4 /* TasksMockData.swift in Sources */,
+				EB89F9CC2A63760B003637F0 /* TaskTypeExtension.swift in Sources */,
 				EB36F4362A50F55B005A9377 /* DueDatePicker.swift in Sources */,
 				EB14FD182A3BE1DF00AADD76 /* Tasks.xcdatamodeld in Sources */,
 				EB14FD0B2A3BDB8800AADD76 /* TasksView.swift in Sources */,

@@ -48,6 +48,12 @@ extension TasksContainer {
         task4.isLike = true
         task4.difficulty = "Hard"
         
+        let type1 = TaskType(context: moc)
+        type1.name = "Personal"
+        
+        let type2 = TaskType(context: moc)
+        type2.name = "Work"
+        
         try? moc.save()
     }
 }

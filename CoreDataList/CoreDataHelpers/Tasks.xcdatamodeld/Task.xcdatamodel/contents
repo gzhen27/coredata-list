@@ -8,11 +8,16 @@
         <attribute name="isLike" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="modifiedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="taskType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TaskType" inverseName="taskObjects" inverseEntity="TaskType"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="name"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
+    </entity>
+    <entity name="TaskType" representedClassName="TaskType" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="taskObjects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TaskObject" inverseName="taskType" inverseEntity="TaskObject"/>
     </entity>
     <fetchRequest name="FetchRequest" entity="TaskObject" predicateString="isLike == 0"/>
 </model>

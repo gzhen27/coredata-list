@@ -41,6 +41,7 @@ struct SaveButtonView: View {
                     showErrorMessage.toggle()
                 }
             }
+            dismiss()
         } label: {
             Text("Save")
                 .padding(.vertical, 10)

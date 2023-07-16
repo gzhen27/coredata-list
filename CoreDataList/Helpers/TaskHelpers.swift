@@ -23,7 +23,6 @@ enum SaveResult {
 func saveTask(task: FetchedResults<TaskObject>.Element, taskInfo: Task, moc: NSManagedObjectContext) -> (SaveResult, String) {
     task.name = taskInfo.name
     task.difficulty = taskInfo.difficulty
-    task.isLike = taskInfo.isLike
     task.modifiedAt = taskInfo.modifiedAt
     task.dueOn = taskInfo.dueOn
     var saveMessage = ""

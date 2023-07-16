@@ -24,29 +24,40 @@ struct TasksView: View {
     private var filterdLiked = false
     
     var body: some View {
-        NavigationStack {
-            List{
-                ForEach(tasks) { task in
-                    NavigationLink(destination: EditTaskView(task: task)) {
-                        taskCell(task: task)
+        TabView {
+            NavigationStack {
+                List{
+                    ForEach(tasks) { task in
+                        NavigationLink(destination: EditTaskView(task: task)) {
+                            taskCell(task: task)
+                        }
                     }
+                    .onDelete(perform: deleteTask)
+                    .navigationTitle("Tasks")
+                    .navigationBarTitleDisplayMode(.inline)
                 }
-                .onDelete(perform: deleteTask)
-                .navigationTitle("Tasks")
-                .navigationBarTitleDisplayMode(.inline)
+                .listStyle(PlainListStyle())
+                .searchable(text: $searchText)
+                .onChange(of: searchText) { text in
+                    tasks.nsPredicate = text.isEmpty ? nil : NSPredicate(format: "name CONTAINS[cd] %@", text)
+                }
+                .toolbar {
+                    toolbarFilterItem
+                    toolbarPlusItem
+                }
             }
-            .listStyle(PlainListStyle())
-            .searchable(text: $searchText)
-            .onChange(of: searchText) { text in
-                tasks.nsPredicate = text.isEmpty ? nil : NSPredicate(format: "name CONTAINS[cd] %@", text)
+            .fullScreenCover(isPresented: $showTaskCreateView) {
+                CreateTaskView()
             }
-            .toolbar {
-                toolbarFilterItem
-                toolbarPlusItem
+            .tabItem {
+                Image(systemName: "line.3.horizontal")
             }
-        }
-        .fullScreenCover(isPresented: $showTaskCreateView) {
-            CreateTaskView()
+            
+            
+            TaskTypeView()
+            .tabItem {
+                Image(systemName: "square.grid.3x1.below.line.grid.1x2")
+            }
         }
     }
     
