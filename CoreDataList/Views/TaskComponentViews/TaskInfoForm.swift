@@ -17,17 +17,24 @@ struct TaskInfoForm: View {
     @Binding
     var dueOn: Date
     
+    @Binding
+    var typeName: String
+    
+    let taskTypeObject: FetchedResults<TaskType>.Element?
+    
     let type: SaveAction
     let createdAt: String?
     let modifiedAt: String?
     
     var body: some View {
         VStack {
-            NameTextFieldView(name: $name, type: type)
+            TextFieldView(name: $name, type: type, title: "Name the task:", placeholder: "enter the task name")
                 .padding(.bottom)
             DifficultyPickerView(difficulty: $difficulty)
                 .padding(.bottom)
             DueDatePicker(dueOn: $dueOn)
+                .padding(.bottom)
+            TextFieldView(name: $typeName, type: type, title: "Task Type:", placeholder: "enter the task type")
                 .padding(.bottom)
             Group {
                 if let createdAt = createdAt {
@@ -52,11 +59,28 @@ struct TaskInfoForm: View {
                 }
             }
         }
+        .onAppear {
+            if let type = taskTypeObject {
+                typeName = type.getName
+            }
+        }
     }
 }
 
 struct TaskInfoForm_Previews: PreviewProvider {
     static var previews: some View {
-        TaskInfoForm(name: .constant("Task name"), difficulty: .constant("Easy"), dueOn: .constant(Date()), type: .create, createdAt: nil, modifiedAt: nil)
+        VStack {
+            TaskInfoForm(name: .constant("Task name"), difficulty: .constant("Easy"), dueOn: .constant(Date()), typeName: .constant("New"), taskTypeObject: createPreviewTaskType(), type: .create, createdAt: "unknown", modifiedAt: "unknown")
+                .padding()
+            Spacer()
+        }
+    }
+    
+    static func createPreviewTaskType() -> FetchedResults<TaskType>.Element {
+        let context = TasksContainer().persistentContainer.viewContext
+        let type = TaskType(context: context)
+        type.name = "New Task"
+        
+        return type
     }
 }

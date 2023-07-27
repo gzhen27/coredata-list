@@ -20,6 +20,9 @@ struct SaveButtonView: View {
     @State
     private var showErrorMessage = false
     
+    @Binding
+    var typeName: String
+    
     let task: FetchedResults<TaskObject>.Element?
     let taskInfo: Task
     let action: SaveAction
@@ -31,6 +34,8 @@ struct SaveButtonView: View {
                 if result == .failure {
                     errorMessage = message
                     showErrorMessage.toggle()
+                } else {
+                    dismiss()
                 }
             } else {
                 let newTask = TaskObject(context: managedObjectContext)
@@ -39,9 +44,10 @@ struct SaveButtonView: View {
                 if result == .failure {
                     errorMessage = message
                     showErrorMessage.toggle()
+                } else {
+                    dismiss()
                 }
             }
-            dismiss()
         } label: {
             Text("Save")
                 .padding(.vertical, 10)
@@ -52,7 +58,7 @@ struct SaveButtonView: View {
                 )
         }
         .foregroundColor(taskInfo.name.isEmpty ? .gray : .accentColor)
-        .disabled(taskInfo.name.isEmpty)
+        .disabled(taskInfo.name.isEmpty || typeName.isEmpty)
         .padding(.bottom)
         .alert("Error", isPresented: $showErrorMessage) {
             Button("OK", role: .cancel) {
@@ -66,6 +72,18 @@ struct SaveButtonView: View {
 
 struct SaveButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        SaveButtonView(task: nil, taskInfo: Task(name: "Save Button", difficulty: "Easy"), action: .create)
+        VStack {
+            Spacer()
+            SaveButtonView(typeName: .constant("New"), task: nil, taskInfo: Task(name: "Save Button", difficulty: "Easy", type: createPreviewTaskType()), action: .create)
+        }
+        .padding()
+    }
+    
+    static func createPreviewTaskType() -> FetchedResults<TaskType>.Element {
+        let context = TasksContainer().persistentContainer.viewContext
+        let type = TaskType(context: context)
+        type.name = "New Task"
+        
+        return type
     }
 }

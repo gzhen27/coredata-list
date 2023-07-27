@@ -15,14 +15,15 @@ struct TaskTypeView: View {
         VStack {
             NavigationStack {
                 List(taskTypes) { type in
-                    NavigationLink {
-                        List(type.getTasks) { task in
-                            Text(task.name ?? "No Name")
+                    if (type.getTasks.count > 0) {
+                        Section {
+                            ForEach(type.getTasks) { task in
+                                Text(task.getName)
+                            }
+                        } header: {
+                            Text("\(type.getName) (\(type.getTasks.count))")
                         }
-                    } label: {
-                        Text(type.name ?? "No Name")
                     }
-
                 }
                 .navigationTitle("Types")
             }

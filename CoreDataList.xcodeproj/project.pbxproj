@@ -14,7 +14,7 @@
 		EB14FD182A3BE1DF00AADD76 /* Tasks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EB14FD162A3BE1DF00AADD76 /* Tasks.xcdatamodeld */; };
 		EB14FD1C2A3BE4AC00AADD76 /* TasksContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB14FD1B2A3BE4AC00AADD76 /* TasksContainer.swift */; };
 		EB1D88432A4F5707006681BE /* DifficultyPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1D88422A4F5707006681BE /* DifficultyPickerView.swift */; };
-		EB1D88472A4FAD4B006681BE /* NameTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1D88462A4FAD4B006681BE /* NameTextFieldView.swift */; };
+		EB1D88472A4FAD4B006681BE /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1D88462A4FAD4B006681BE /* TextFieldView.swift */; };
 		EB1D88492A4FCC55006681BE /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1D88482A4FCC55006681BE /* Task.swift */; };
 		EB36F42F2A50D863005A9377 /* CloseButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB36F42E2A50D863005A9377 /* CloseButtonView.swift */; };
 		EB36F4312A50D8F6005A9377 /* SaveButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB36F4302A50D8F6005A9377 /* SaveButtonView.swift */; };
@@ -39,7 +39,7 @@
 		EB14FD172A3BE1DF00AADD76 /* Task.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Task.xcdatamodel; sourceTree = "<group>"; };
 		EB14FD1B2A3BE4AC00AADD76 /* TasksContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksContainer.swift; sourceTree = "<group>"; };
 		EB1D88422A4F5707006681BE /* DifficultyPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyPickerView.swift; sourceTree = "<group>"; };
-		EB1D88462A4FAD4B006681BE /* NameTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTextFieldView.swift; sourceTree = "<group>"; };
+		EB1D88462A4FAD4B006681BE /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		EB1D88482A4FCC55006681BE /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		EB36F42E2A50D863005A9377 /* CloseButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButtonView.swift; sourceTree = "<group>"; };
 		EB36F4302A50D8F6005A9377 /* SaveButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButtonView.swift; sourceTree = "<group>"; };
@@ -137,7 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				EB1D88422A4F5707006681BE /* DifficultyPickerView.swift */,
-				EB1D88462A4FAD4B006681BE /* NameTextFieldView.swift */,
+				EB1D88462A4FAD4B006681BE /* TextFieldView.swift */,
 				EB36F4332A50E42D005A9377 /* TaskInfoForm.swift */,
 				EB36F4352A50F55B005A9377 /* DueDatePicker.swift */,
 			);
@@ -247,7 +247,7 @@
 				EB36F4342A50E42D005A9377 /* TaskInfoForm.swift in Sources */,
 				EBCF84B32A3CFD250028FE0B /* CreateTaskView.swift in Sources */,
 				EBCC19342A4E145D00FCCCCC /* EditTaskView.swift in Sources */,
-				EB1D88472A4FAD4B006681BE /* NameTextFieldView.swift in Sources */,
+				EB1D88472A4FAD4B006681BE /* TextFieldView.swift in Sources */,
 				EB1D88432A4F5707006681BE /* DifficultyPickerView.swift in Sources */,
 				EB1D88492A4FCC55006681BE /* Task.swift in Sources */,
 				EB36F4312A50D8F6005A9377 /* SaveButtonView.swift in Sources */,

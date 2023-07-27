@@ -25,6 +25,8 @@ func saveTask(task: FetchedResults<TaskObject>.Element, taskInfo: Task, moc: NSM
     task.difficulty = taskInfo.difficulty
     task.modifiedAt = taskInfo.modifiedAt
     task.dueOn = taskInfo.dueOn
+    task.taskType = taskInfo.type
+    
     var saveMessage = ""
     
     if moc.hasChanges {
@@ -38,7 +40,7 @@ func saveTask(task: FetchedResults<TaskObject>.Element, taskInfo: Task, moc: NSM
                 for conflict in constraintConflicts {
                     for (_, value) in conflict.constraintValues {
                         //Currently only the name field is in constraints. We are safe to use this in the for in loop.
-                       saveMessage = "The task \(value) is already exists."
+                       saveMessage = "The task/type \(value) is already exists."
                     }
                 }
             }
@@ -51,4 +53,28 @@ func saveTask(task: FetchedResults<TaskObject>.Element, taskInfo: Task, moc: NSM
     }
     
     return (SaveResult.success, saveMessage)
+}
+
+
+func getTaskType(typeName: String, types: FetchedResults<TaskType>, moc: NSManagedObjectContext) -> FetchedResults<TaskType>.Element {
+    if let type = types.first(where: { $0.getName == typeName }) {
+        return type
+    } else {
+        let type = TaskType(context: moc)
+        type.name = typeName
+        return type
+    }
+}
+
+
+func createTypeInfo(
+    typeName: String,
+    types: FetchedResults<TaskType>,
+    moc: NSManagedObjectContext,
+    name: String,
+    difficulty: String,
+    dueOn: Date
+) -> Task {
+    let type = getTaskType(typeName: typeName, types: types, moc: moc)
+    return Task(name: name, difficulty: difficulty, dueOn: dueOn, type: type)
 }

@@ -1,5 +1,5 @@
 //
-//  NameTextFieldView.swift
+//  TextFieldView.swift
 //  CoreDataList
 //
 //  Created by G Zhen on 6/30/23.
@@ -7,16 +7,18 @@
 
 import SwiftUI
 
-struct NameTextFieldView: View {
+struct TextFieldView: View {
     @Binding
     var name: String
     
     let type: SaveAction
+    let title: String
+    let placeholder: String
     
     var body: some View {
         VStack {
             HStack {
-                Text("Name the task:")
+                Text(title)
                     .font(.headline)
                 Spacer()
             }
@@ -24,7 +26,7 @@ struct NameTextFieldView: View {
                 Image(systemName: "pencil.line")
                     .foregroundColor(.gray)
                     .font(.headline)
-                TextField("task name", text: $name)
+                TextField(placeholder, text: $name)
                 .keyboardType(.asciiCapable)
                 .autocorrectionDisabled(true)
             }
@@ -36,6 +38,9 @@ struct NameTextFieldView: View {
 
 struct NameTextFieldView_Previews: PreviewProvider {
     static var previews: some View {
-        NameTextFieldView(name: .constant("Task"), type: .create)
+        VStack {
+            TextFieldView(name: .constant("Task"), type: .create, title: "Name", placeholder: "placeholder")
+        }
+        .padding()
     }
 }

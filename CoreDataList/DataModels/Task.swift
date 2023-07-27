@@ -15,8 +15,18 @@ struct Task {
     let createdAt: Date
     let modifiedAt: Date
     let dueOn: Date
+    var type: TaskType
     
-    init(name: String, difficulty: String, isLike: Bool = false, isCompleted: Bool = false, createdAt: Date = Date(), modifiedAt: Date = Date(), dueOn: Date = Date()) {
+    init(
+        name: String,
+        difficulty: String,
+        isLike: Bool = false,
+        isCompleted: Bool = false,
+        createdAt: Date = Date(),
+        modifiedAt: Date = Date(),
+        dueOn: Date = Date(),
+        type: TaskType
+    ) {
         self.name = name
         self.difficulty = difficulty
         self.isLike = isLike
@@ -24,5 +34,6 @@ struct Task {
         self.createdAt = createdAt
         self.modifiedAt = modifiedAt
         self.dueOn = dueOn
+        self.type = type
     }
 }
