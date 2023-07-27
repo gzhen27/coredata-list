@@ -20,12 +20,12 @@ enum SaveResult {
 }
 
 // BUG: -- when updating a task with the exist name, the tasks on the view will be mess up.
-func saveTask(task: FetchedResults<TaskObject>.Element, taskInfo: Task, moc: NSManagedObjectContext) -> (SaveResult, String) {
+func saveTask(task: TaskObject, type: TaskType, taskInfo: Task, moc: NSManagedObjectContext) -> (SaveResult, String) {
     task.name = taskInfo.name
     task.difficulty = taskInfo.difficulty
     task.modifiedAt = taskInfo.modifiedAt
     task.dueOn = taskInfo.dueOn
-    task.taskType = taskInfo.type
+    task.taskType = type
     
     var saveMessage = ""
     
@@ -64,17 +64,4 @@ func getTaskType(typeName: String, types: FetchedResults<TaskType>, moc: NSManag
         type.name = typeName
         return type
     }
-}
-
-
-func createTypeInfo(
-    typeName: String,
-    types: FetchedResults<TaskType>,
-    moc: NSManagedObjectContext,
-    name: String,
-    difficulty: String,
-    dueOn: Date
-) -> Task {
-    let type = getTaskType(typeName: typeName, types: types, moc: moc)
-    return Task(name: name, difficulty: difficulty, dueOn: dueOn, type: type)
 }

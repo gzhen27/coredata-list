@@ -14,9 +14,6 @@ struct CreateTaskView: View {
     @Environment(\.managedObjectContext)
     private var managedObjectContext
     
-    @FetchRequest<TaskType>(sortDescriptors: [])
-    private var taskTypes
-    
     @State
     private var name = ""
     
@@ -34,16 +31,15 @@ struct CreateTaskView: View {
             HeaderView(content: "Create Task")
             TaskInfoForm(name: $name, difficulty: $difficulty, dueOn: $dueOn, typeName: $typeName, taskTypeObject: nil, type: .create, createdAt: nil, modifiedAt: nil)
             Spacer()
-            SaveButtonView(typeName: $typeName, task: nil, taskInfo: createTypeInfo(typeName: typeName, types: taskTypes, moc: managedObjectContext, name: name, difficulty: difficulty, dueOn: dueOn), action: .create)
+            SaveButtonView(typeName: $typeName, task: nil, taskInfo: Task(name: name, difficulty: difficulty, dueOn: dueOn), action: .create)
         }
         .padding(.horizontal)
         .presentationCornerRadius(8)
     }
 }
 
-//Preview BUG - crashed preview with creating type info
-//struct TaskCreationView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CreateTaskView()
-//    }
-//}
+struct TaskCreationView_Previews: PreviewProvider {
+    static var previews: some View {
+        CreateTaskView()
+    }
+}

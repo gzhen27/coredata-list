@@ -14,6 +14,9 @@ struct SaveButtonView: View {
     @Environment(\.dismiss)
     var dismiss
     
+    @FetchRequest<TaskType>(sortDescriptors: [])
+    private var taskTypes
+    
     @State
     private var errorMessage = ""
     
@@ -29,8 +32,9 @@ struct SaveButtonView: View {
     
     var body: some View {
         Button {
+            let type = getTaskType(typeName: typeName, types: taskTypes, moc: managedObjectContext)
             if let task = task {
-                let (result, message) = saveTask(task: task, taskInfo: taskInfo, moc: managedObjectContext)
+                let (result, message) = saveTask(task: task, type: type, taskInfo: taskInfo, moc: managedObjectContext)
                 if result == .failure {
                     errorMessage = message
                     showErrorMessage.toggle()
@@ -40,7 +44,7 @@ struct SaveButtonView: View {
             } else {
                 let newTask = TaskObject(context: managedObjectContext)
                 newTask.createdAt = taskInfo.createdAt
-                let (result, message) = saveTask(task: newTask, taskInfo: taskInfo, moc: managedObjectContext)
+                let (result, message) = saveTask(task: newTask, type: type, taskInfo: taskInfo, moc: managedObjectContext)
                 if result == .failure {
                     errorMessage = message
                     showErrorMessage.toggle()
@@ -74,16 +78,8 @@ struct SaveButtonView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             Spacer()
-            SaveButtonView(typeName: .constant("New"), task: nil, taskInfo: Task(name: "Save Button", difficulty: "Easy", type: createPreviewTaskType()), action: .create)
+            SaveButtonView(typeName: .constant("New"), task: nil, taskInfo: Task(name: "Save Button", difficulty: "Easy"), action: .create)
         }
         .padding()
-    }
-    
-    static func createPreviewTaskType() -> FetchedResults<TaskType>.Element {
-        let context = TasksContainer().persistentContainer.viewContext
-        let type = TaskType(context: context)
-        type.name = "New Task"
-        
-        return type
     }
 }

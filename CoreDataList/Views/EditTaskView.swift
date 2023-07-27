@@ -14,9 +14,6 @@ struct EditTaskView: View {
     @Environment(\.managedObjectContext)
     var managedObjectContext
     
-    @FetchRequest<TaskType>(sortDescriptors: [])
-    private var taskTypes
-    
     let task: FetchedResults<TaskObject>.Element
     
     @State
@@ -36,7 +33,7 @@ struct EditTaskView: View {
             HeaderView(content: "Edit Task")
             TaskInfoForm(name: $name, difficulty: $difficulty, dueOn: $dueOn, typeName: $typeName, taskTypeObject: task.taskType, type: .edit, createdAt: task.getCreatedAt, modifiedAt: task.getModifiedAt)
             Spacer()
-            SaveButtonView(typeName: $typeName, task: task, taskInfo: createTypeInfo(typeName: typeName, types: taskTypes, moc: managedObjectContext, name: name, difficulty: difficulty, dueOn: dueOn), action: .edit)
+            SaveButtonView(typeName: $typeName, task: task, taskInfo: Task(name: name, difficulty: difficulty, dueOn: dueOn), action: .edit)
         }
         .padding(.horizontal)
         .navigationBarBackButtonHidden(true)
@@ -48,20 +45,19 @@ struct EditTaskView: View {
     }
 }
 
-//Preview BUG - crashed preview with creating type info
-//struct EditTaskView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        EditTaskView(task: createPreviewTask())
-//    }
-//
-//    static func createPreviewTask() -> FetchedResults<TaskObject>.Element {
-//        let context = TasksContainer().persistentContainer.viewContext
-//        let task = TaskObject(context: context)
-//        task.name = "Preview task"
-//        task.createdAt = Date.now
-//        task.difficulty = "easy"
-//        task.isLike = true
-//
-//        return task
-//    }
-//}
+struct EditTaskView_Previews: PreviewProvider {
+    static var previews: some View {
+        EditTaskView(task: createPreviewTask())
+    }
+
+    static func createPreviewTask() -> FetchedResults<TaskObject>.Element {
+        let context = TasksContainer().persistentContainer.viewContext
+        let task = TaskObject(context: context)
+        task.name = "Preview task"
+        task.createdAt = Date.now
+        task.difficulty = "easy"
+        task.isLike = true
+
+        return task
+    }
+}
