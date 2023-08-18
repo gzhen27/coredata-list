@@ -19,7 +19,7 @@ enum SaveResult {
     case failure
 }
 
-// BUG: -- when updating a task with the exist name, the tasks on the view will be mess up.
+
 func saveTask(task: TaskObject, type: TaskType, taskInfo: Task, moc: NSManagedObjectContext) -> (SaveResult, String) {
     task.name = taskInfo.name
     task.difficulty = taskInfo.difficulty

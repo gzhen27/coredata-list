@@ -25,7 +25,7 @@ struct TaskTypeView: View {
                         }
                     }
                 }
-                .navigationTitle("Types")
+                .navigationTitle("Tasks")
             }
         }
     }
