@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct TaskTypeView: View {
-    @FetchRequest<TaskType>(sortDescriptors: [])
+    @FetchRequest<TaskType>(sortDescriptors: [SortDescriptor(\.name)])
     private var taskTypes
     
     var body: some View {
         VStack {
             NavigationStack {
                 List(taskTypes) { type in
-                    if (type.getTasks.count > 0) {
+                    if (type.getSortedTasks.count > 0) {
                         Section {
-                            ForEach(type.getTasks) { task in
+                            ForEach(type.getSortedTasks) { task in
                                 Text(task.getName)
                             }
                         } header: {

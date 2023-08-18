@@ -17,7 +17,7 @@
     </entity>
     <entity name="TaskType" representedClassName="TaskType" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="taskObjects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TaskObject" inverseName="taskType" inverseEntity="TaskObject"/>
+        <relationship name="taskObjects" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="TaskObject" inverseName="taskType" inverseEntity="TaskObject"/>
     </entity>
     <fetchRequest name="FetchRequest" entity="TaskObject" predicateString="isLike == 0"/>
 </model>

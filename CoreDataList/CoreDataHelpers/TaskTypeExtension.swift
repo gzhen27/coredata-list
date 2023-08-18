@@ -15,6 +15,10 @@ extension TaskType {
     // MARK: - For Relationship tables
     var getTasks: [TaskObject] {
         // convert NSSet to Array
-        taskObjects?.allObjects as? [TaskObject] ?? []
+        taskObjects?.array as? [TaskObject] ?? []
+    }
+    
+    var getSortedTasks: [TaskObject] {
+        return getTasks.sorted { $0.getName.uppercased() < $1.getName.uppercased() }
     }
 }
